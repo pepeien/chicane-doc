@@ -73,7 +73,7 @@ async function generatePage({ params }: Props) {
         }
     };
 
-    let reference: Reference;
+    let reference: Reference | undefined;
 
     await fetch(`${InternalServices.getBLOB()}/references.json`)
         .then((res) => res.json())
