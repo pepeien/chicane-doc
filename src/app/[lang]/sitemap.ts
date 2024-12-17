@@ -3,7 +3,7 @@ import { Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 import { headers } from 'next/headers';
 
 // Types
-import { Blog } from '@utils/interfaces';
+import { Reference } from '@utils/interfaces';
 
 // Services
 import { InternalServices, StringServices } from '@utils/services';
@@ -58,40 +58,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     } as SiteMap);
 
-    const releasedBlogPosts = await fetch(`${InternalServices.getBLOB()}/blog/metadata.json`, {
+    const references: Reference[] = await fetch(`${InternalServices.getBLOB()}/references.json`, {
         next: { revalidate: InternalServices.getFetchInterval() },
     })
         .then((_res) => _res.json())
-        .then((_blog: Blog[]) => _blog.filter((_post) => _post.status === 'RELEASED'))
-        .catch(() => [] as Blog[]);
+        .catch(() => [] as Reference[]);
 
-    if (releasedBlogPosts.length > 0) {
-        releasedBlogPosts
-            .sort((pastPost, currentPost) => {
-                if (pastPost.date === currentPost.date) {
-                    return 0;
-                }
+    const appendReferencesToSiteMap = (reference: Reference, path = '') => {
+        const currentPath = StringServices.removeExtraSlashes(`${path}/${reference.path}`);
 
-                if (pastPost.date > currentPost.date) {
-                    return 1;
-                }
+        result.push({
+            url: `${url}/${currentPath}`,
+            lastModified: new Date(),
+            alternates: {
+                languages: getAlternates(baseUrl, currentPath),
+            },
+        } as SiteMap);
 
-                return -1;
-            })
-            .forEach((post) => {
-                const path = `blog/${post.id}`;
+        if (!reference.children) {
+            return;
+        }
 
-                const blogSitemap = {
-                    url: `${url}/${path}`,
-                    lastModified: post.updateDate ?? post.date,
-                    alternates: {
-                        languages: getAlternates(baseUrl, path),
-                    },
-                } as SiteMap;
+        reference.children.forEach((_) => {
+            appendReferencesToSiteMap(_, currentPath);
+        });
+    };
 
-                result.push(blogSitemap);
-            });
-    }
+    references.forEach((reference) => {
+        appendReferencesToSiteMap(reference, 'reference');
+    });
 
     return result;
 }
