@@ -97,12 +97,12 @@ async function generatePage({ params }: Props) {
                         );
 
                         return (
-                            <>
-                                <li key={currentHref} data-is-active={pagePath === currentPath}>
+                            <React.Fragment key={currentHref}>
+                                <li data-is-active={pagePath === currentPath}>
                                     <Link href={`/${currentHref}`}>{path}</Link>
                                 </li>
-                                <li key={`${currentHref}-slash`}>/</li>
-                            </>
+                                <li>/</li>
+                            </React.Fragment>
                         );
                     })}
                 </ul>

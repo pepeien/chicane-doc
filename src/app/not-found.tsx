@@ -10,7 +10,7 @@ export default async function Page() {
     const dictionary = await getDictionary(getServerDefaultLocale());
 
     return (
-        <Layout.generatePage params={{ lang: getServerDefaultLocale() }}>
+        <Layout.generatePage params={{ lang: getServerDefaultLocale(), reference: '' }}>
             <main className='not-found --page --hidden-overflow-all --fade-in'>
                 <section>
                     <div className='not-found__title'>
