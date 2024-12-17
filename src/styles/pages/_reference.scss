@@ -1,0 +1,53 @@
+.reference {
+    &__history {
+        align-items: center;
+        gap: 1vh;
+        font-family: 'K2D';
+        list-style-type: none;
+
+        li {
+            color: $--black;
+
+            &[data-is-active="true"] {
+                a {
+                    padding: 0.25rem 1.25rem;
+                    color: $--white;
+                    background-color: $--black;
+                    border-radius: 1rem;
+                    font-weight: 300;
+                    opacity: 1;
+                }
+            }
+
+            a {
+                color: $--black;
+                text-decoration: none;
+                font-size: 1.1rem;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    &__title {
+        h1 {
+            font-family: 'K2D';
+            font-size: 3rem;
+            font-weight: bold;
+            margin-top: 3rem;
+        }
+    }
+
+    &__system {
+        display: inline;
+        margin-top: 2rem;
+
+        span {
+            padding: 0.25rem 2rem;
+            border-radius: 1rem;
+            background-color: $--black;
+            color: $--white;
+            font-family: 'K2D';
+            font-size: 0.9rem;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.header {
+    width: calc(100% - 2vh);
+    align-items: center;
+    background-color: $--black;
+    padding: 0 1vh;
+    box-shadow: $--box-shadow;
+
+    &__icon {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+
+        svg {
+            width: 4rem;
+            height: auto;
+            stroke: $--white;
+        }
+
+        h2 {
+            color: $--white;
+            font-family: 'K2D';
+            font-size: 1.1rem;
+        }
+    }
+}

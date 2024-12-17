@@ -1,0 +1,71 @@
+//Layout Import
+@import 'layout/animations';
+@import 'layout/mods';
+
+//Components Import
+@import 'components/markdown';
+@import 'components/navbar';
+@import 'components/navigator';
+
+@import 'components/buttons/home';
+@import 'components/buttons/theme';
+
+@import 'components/listing/language';
+
+//Pages Import
+@import 'pages/home';
+@import 'pages/not-found';
+@import 'pages/reference';
+
+body {
+    width: 100vw;
+    height: 100vh;
+	background-color: $--white;
+
+    -webkit-transition: background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
+    -moz-transition:    background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
+    -o-transition:      background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
+    transition:         background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
+
+    header {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        z-index: 2;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+
+        section {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+    }
+}
+
+@media only screen and (min-width: $--min-desktop-width) {
+    body {
+        overflow: hidden;
+
+        header {
+            position: relative;
+        }
+
+        main {
+            flex-direction: row;
+            overflow: hidden;
+
+            section {
+                flex: 1;
+                overflow-y: auto;
+                padding: 3rem;
+            }
+        }
+    }
+}

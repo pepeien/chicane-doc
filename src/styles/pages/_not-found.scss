@@ -1,0 +1,53 @@
+.not-found {
+	height: 100vh;
+
+	&__title {
+		position: fixed;
+		top: 35dvh;
+		left: 2vh;
+
+        h2, h3 {
+			font-family: 'K2D';
+			color: $--black;
+        }
+
+		h2 {
+			font-size: 25vh;
+			text-transform: uppercase;
+		}
+
+		h3 {
+            font-style: italic;
+            font-weight: 300;
+            font-size: 6vh;
+			margin-left: 2vh;
+		}
+	}
+
+	.mountains {
+		position: fixed;
+		bottom: 0;
+	}
+}
+
+@media only screen and (min-width: $--min-desktop-width) {
+	.not-found {
+		&__title {
+			top: 27vh;
+			left: 15vh;
+	
+			h3 {
+				margin-left: 2vh;
+				font-size: 8vh;
+			}
+	
+			h2 {
+				font-size: 38vh;
+			}
+		}
+
+		.mountains {
+			bottom: -15vh;
+		}
+	}
+}

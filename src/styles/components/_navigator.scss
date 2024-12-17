@@ -1,0 +1,128 @@
+$--padding: 1rem;
+
+.navigator {
+    width: 100vw;
+    height: 36vh;
+    border: none;
+    background-color: $--black;
+    border-bottom: 1px solid $--grey-color;
+    padding-top: 4rem;
+
+    > ul {
+        width: 100%;
+        height: 100%;
+        padding: $--padding;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    ul {
+        width: calc(100% - calc($--padding * 2));
+        padding: calc($--padding / 3) $--padding;
+        list-style: none;
+        gap: calc($--padding / 2);
+
+        li {
+            width: 100%;
+
+            a {
+                align-items: center;
+                text-decoration: none;
+                font-family: 'K2D';
+                color: $--white;
+                border-radius: $--squircle-border-radius;
+                padding: calc($--padding * 0.7) $--padding;
+                padding-left: 0;
+
+                svg {
+                    width: 1rem;
+                    height: auto;
+                    stroke: $--white;
+                    margin-left: auto;
+                }
+            }
+
+            ul {
+                width: calc(100% - calc($--padding * 1.5));
+                padding-right: 0;
+                padding-left: calc($--padding * 1.25);
+            }
+
+            &[data-is-collapsed="true"] {
+                ul {
+                    display: none;
+                }
+
+                a {
+                    svg {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+
+            &[data-is-collapsed="false"] {
+                ul {
+                    margin-top: 1vh;
+                    border-left: 1px solid $--white;
+                }
+            }
+
+            &[data-is-current-reference="true"] {
+                > a {
+                    padding-left: $--padding;
+                    background-color: $--white;
+                    color: $--black;
+
+                    svg {
+                        stroke: $--black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $--min-desktop-width) {
+    .navigator {
+        flex: 1;
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        border: none;
+        border-right: 1px solid $--grey-color;
+        overflow: hidden;
+        overflow-y: auto;
+        margin: 0;
+        background-color: transparent;
+        padding-top: 1rem;
+
+        ul {
+            li {
+                a {
+                    color: $--black;
+
+                    svg {
+                        stroke: $--black;
+                    }
+                }
+    
+                &[data-is-collapsed="false"] {
+                    ul {
+                        border-left: 1px solid $--black;
+                    }
+                }
+    
+                &[data-is-current-reference="true"] {
+                    > a {
+                        background-color: $--black;
+                        color: $--white;
+    
+                        svg {
+                            stroke: $--white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

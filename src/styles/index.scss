@@ -1,0 +1,14 @@
+//Base Import
+@import 'base/reset';
+@import 'base/fonts';
+@import 'base/variables';
+
+html, html.light {
+    @import 'themes/light';
+    @import 'main';
+}
+
+html.dark {
+    @import 'themes/dark';
+    @import 'main';
+}

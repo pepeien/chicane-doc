@@ -1,0 +1,11 @@
+.home-button {
+    left: 1.25vh;
+    bottom: 0.8vh;
+}
+
+@media only screen and (min-width: $--min-desktop-width) {
+    .home-button {
+        left: 0.5vh;
+        bottom: 0.5vh;
+    }
+}
