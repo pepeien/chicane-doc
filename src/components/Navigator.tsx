@@ -15,6 +15,9 @@ interface Props {
 export default async function Component({ dictionary, location }: Props) {
     const references: Reference[] = await fetch(
         `${InternalServices.getBLOB()}/references/metadata.json`,
+        {
+            next: { revalidate: InternalServices.getFetchInterval() },
+        },
     ).then((res) => res.json());
 
     const getLink = (reference: Reference, currentPath = '') => {
@@ -57,7 +60,7 @@ export default async function Component({ dictionary, location }: Props) {
     };
 
     return (
-        <nav className='navigator --flex-column'>
+        <nav id='navigator' className='navigator --flex-column'>
             <ul className='--flex-column'>{references.map((reference) => getLink(reference))}</ul>
         </nav>
     );

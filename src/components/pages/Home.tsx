@@ -52,10 +52,10 @@ async function generatePage({ params }: Props) {
     const dictionary = await getDictionary(params.lang);
 
     return (
-        <>
+        <React.Fragment>
             <Navigator dictionary={dictionary} location='' />
             <section></section>
-        </>
+        </React.Fragment>
     );
 }
 

@@ -1,0 +1,39 @@
+.language-button {
+    align-items: flex-end;
+
+    ul {
+        position: absolute;
+        border-radius: calc($--squircle-border-radius * 1.2);
+        background-color: $--black;
+        margin-top: 3rem;
+        padding: 0.5rem;
+        box-shadow: $--box-shadow;
+        border: 1px solid $--light-grey-color;
+
+        &[data-is-list-visible="false"] {
+            display: none;
+        }
+
+        li {
+            a {
+                color: $--white;
+                font-family: 'K2D';
+                font-size: 0.8rem;
+                text-decoration: none;
+                width: 100%;
+                height: 100%;
+                padding: 1rem 1.5rem;
+                min-width: 8rem;
+                border-radius: $--squircle-border-radius;
+    
+                &:active,
+                &:focus,
+                &:focus-within,
+                &:hover {
+                    cursor: pointer;
+                    background-color: $--dark-grey-color;
+                }
+            }
+        }
+    }
+}

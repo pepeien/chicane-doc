@@ -80,7 +80,9 @@ async function generatePage({ params }: Props) {
 
     let reference: Reference | undefined;
 
-    await fetch(`${blobURL}/references/metadata.json`)
+    await fetch(`${blobURL}/references/metadata.json`, {
+        next: { revalidate: InternalServices.getFetchInterval() },
+    })
         .then((res) => res.json())
         .then((references: Reference[]) => findReferenceByPath(references, '', pagePath));
 
@@ -99,7 +101,7 @@ async function generatePage({ params }: Props) {
     }
 
     return (
-        <>
+        <React.Fragment>
             <Navigator dictionary={dictionary} location={params.reference.join('/')} />
             <section>
                 <ul className='reference__history --flex-row'>
@@ -133,7 +135,7 @@ async function generatePage({ params }: Props) {
                     </Markdown>
                 </article>
             </section>
-        </>
+        </React.Fragment>
     );
 }
 

@@ -6,8 +6,11 @@ import Link from 'next/link';
 // Types
 import { Dictionary } from '@utils/interfaces';
 
+// Dictionary
+import { getClientLocales } from '@dictionary';
+
 // Components
-import { ThemeButton } from '@components';
+import { HamburguerButton, LanguageButton, ThemeButton } from '@components';
 
 interface Props {
     dictionary: Dictionary;
@@ -30,7 +33,9 @@ export default function Component({ dictionary }: Props) {
                 </svg>
                 <h2>Chicane</h2>
             </Link>
+            <LanguageButton dictionary={dictionary} locales={getClientLocales()} />
             <ThemeButton />
+            <HamburguerButton />
         </header>
     );
 }

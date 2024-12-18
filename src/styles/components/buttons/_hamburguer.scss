@@ -1,0 +1,21 @@
+.hamburguer-button {
+    position: absolute;
+    margin-left: auto;
+    background-color: $--white;
+    padding: 0 0.6rem;
+    height: 101%;
+
+    button {
+        background-color: transparent;
+        border: transparent;
+        background-color: transparent;
+
+        svg {
+            path {
+                fill: $--black;
+                stroke: $--black;
+            }
+        }
+    }
+
+}

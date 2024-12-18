@@ -1,12 +1,21 @@
 $--padding: 1rem;
 
 .navigator {
-    width: 100vw;
-    height: 15rem;
-    border: none;
+    width: 100dvw;
+    height: 100dvh;
     background-color: $--black;
-    border-bottom: 1px solid $--grey-color;
     padding-top: 4rem;
+    overflow: hidden;
+
+    -webkit-transition: height ease-in-out 0.2s;
+    -moz-transition:    height ease-in-out 0.2s;
+    -o-transition:      height ease-in-out 0.2s;
+    transition:         height ease-in-out 0.2s;
+
+    &[data-is-hidden="true"] {
+        height: 0px;
+        border: none;
+    }
 
     > ul {
         width: 100%;
@@ -84,9 +93,7 @@ $--padding: 1rem;
 
 @media only screen and (min-width: $--min-desktop-width) {
     .navigator {
-        flex: 1;
-        width: 100%;
-        max-width: 400px;
+        width: 400px;
         height: 100%;
         border: none;
         border-right: 1px solid $--grey-color;
@@ -94,7 +101,21 @@ $--padding: 1rem;
         overflow-y: auto;
         margin: 0;
         background-color: transparent;
-        padding-top: 1rem;
+        padding-top: $--padding;
+
+        -webkit-transition: width ease-in-out 0.2s;
+        -moz-transition:    width ease-in-out 0.2s;
+        -o-transition:      width ease-in-out 0.2s;
+        transition:         width ease-in-out 0.2s;
+    
+        &[data-is-hidden="true"] {
+            height: initial;
+            width: 0px;
+        }
+
+        > ul {
+            padding-bottom: calc($--padding * 2);
+        }
 
         ul {
             li {

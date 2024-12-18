@@ -1,15 +1,14 @@
 .header {
-    width: calc(100% - 2vh);
+    width: 100%;
     align-items: center;
     background-color: $--black;
-    padding: 0 1vh;
-    box-shadow: $--box-shadow;
 
     &__icon {
         display: flex;
         flex-direction: row;
         align-items: center;
         text-decoration: none;
+        margin-right: auto;
 
         svg {
             width: 4rem;
