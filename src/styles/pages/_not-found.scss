@@ -1,53 +1,40 @@
 .not-found {
-	height: 100vh;
+    height: 100%;
 
 	&__title {
-		position: fixed;
-		top: 35dvh;
-		left: 2vh;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
 
         h2, h3 {
 			font-family: 'K2D';
 			color: $--black;
+            text-align: center;
         }
 
 		h2 {
-			font-size: 25vh;
+			font-size: 8rem;
 			text-transform: uppercase;
 		}
 
 		h3 {
             font-style: italic;
             font-weight: 300;
-            font-size: 6vh;
-			margin-left: 2vh;
+            font-size: 4rem;
 		}
-	}
-
-	.mountains {
-		position: fixed;
-		bottom: 0;
 	}
 }
 
 @media only screen and (min-width: $--min-desktop-width) {
 	.not-found {
 		&__title {
-			top: 27vh;
-			left: 15vh;
-	
-			h3 {
-				margin-left: 2vh;
-				font-size: 8vh;
-			}
-	
 			h2 {
-				font-size: 38vh;
+				font-size: 12rem;
 			}
-		}
 
-		.mountains {
-			bottom: -15vh;
+			h3 {
+				font-size: 6rem;
+			}
 		}
 	}
 }
