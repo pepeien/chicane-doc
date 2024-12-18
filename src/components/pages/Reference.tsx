@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import React from 'react';
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 // Dictionary
 import { getDictionary } from '@dictionary';
@@ -13,7 +17,6 @@ import { Navigator } from '@components';
 
 // Services
 import { InternalServices, StringServices } from '@utils/services';
-import { notFound } from 'next/navigation';
 
 interface Props {
     params: { lang: string; reference: string[] };
@@ -56,6 +59,8 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 async function generatePage({ params }: Props) {
     const dictionary = await getDictionary(params.lang);
 
+    const blobURL = InternalServices.getBLOB();
+
     const pagePath = params.reference.join('/');
     const fullPath: string[] = [];
 
@@ -75,11 +80,21 @@ async function generatePage({ params }: Props) {
 
     let reference: Reference | undefined;
 
-    await fetch(`${InternalServices.getBLOB()}/references.json`)
+    await fetch(`${blobURL}/references/metadata.json`)
         .then((res) => res.json())
         .then((references: Reference[]) => findReferenceByPath(references, '', pagePath));
 
     if (!reference) {
+        return notFound();
+    }
+
+    const markdownData = await fetch(`${blobURL}/references/${pagePath}/${params.lang}.md`, {
+        next: { revalidate: InternalServices.getFetchInterval() },
+    })
+        .then((_res) => _res.text())
+        .catch(() => undefined);
+
+    if (!markdownData || markdownData.startsWith('<?xml')) {
         return notFound();
     }
 
@@ -112,7 +127,11 @@ async function generatePage({ params }: Props) {
                 <div className='reference__system'>
                     <span>{params.reference[0]}</span>
                 </div>
-                <article></article>
+                <article className='reference__text markdown'>
+                    <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+                        {markdownData}
+                    </Markdown>
+                </article>
             </section>
         </>
     );
