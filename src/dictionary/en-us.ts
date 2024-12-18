@@ -21,8 +21,8 @@ export default {
     DATE_ELAPSED: 'ago',
     DATE_ELAPSED_LOCATION: 'AFTER',
 
-    HOME_PAGE_TITLE: 'Chicane Engine Documentation',
-    HOME_PAGE_DESCRIPTION: 'Chicane Engine Documentation',
+    HOME_PAGE_TITLE: 'Chicane Engine - Documentation',
+    HOME_PAGE_DESCRIPTION: 'A database for whate makes the Chicane Engine.',
 
     NOW_TEXT: 'Present',
     UPCOMING_TEXT: 'Coming Soon',

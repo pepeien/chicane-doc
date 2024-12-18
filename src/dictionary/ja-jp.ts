@@ -19,8 +19,8 @@ export default {
     DATE_HOUR_LONG: '時間前',
     DATE_HOUR_LONG_PLURAL: '時間前',
 
-    HOME_PAGE_TITLE: 'Chicane Engine ドキュメント',
-    HOME_PAGE_DESCRIPTION: 'Chicane Engine ドキュメント',
+    HOME_PAGE_TITLE: 'Chicane Engine - ドキュメント',
+    HOME_PAGE_DESCRIPTION: 'Chicane Engineリリスのドキュメント',
 
     NOW_TEXT: '現在',
     UPCOMING_TEXT: '公開予定',
