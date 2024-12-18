@@ -12,7 +12,7 @@ import { getAlternates, getDictionary, LOCALE_HEADER_KEY } from '@dictionary';
 import { InternalServices } from '@utils/services';
 
 interface Props {
-    params: { lang: string; reference: string };
+    params: { lang: string };
     children: React.ReactNode;
 }
 

@@ -58,9 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     } as SiteMap);
 
-    const references: Reference[] = await fetch(`${InternalServices.getBLOB()}/references.json`, {
-        next: { revalidate: InternalServices.getFetchInterval() },
-    })
+    const references: Reference[] = await fetch(
+        `${InternalServices.getBLOB()}/references/metadata.json`,
+        {
+            next: { revalidate: InternalServices.getFetchInterval() },
+        },
+    )
         .then((_res) => _res.json())
         .catch(() => [] as Reference[]);
 

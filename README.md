@@ -35,7 +35,7 @@ This is the Blob structure
 
 #### References
 
-- A file at `{BLOB}/references.json` will need to follow this template:
+- A file at `{BLOB}/references/metadata.json` will need to follow this template:
 
 ```json
 [

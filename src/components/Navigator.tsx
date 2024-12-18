@@ -14,7 +14,7 @@ interface Props {
 
 export default async function Component({ dictionary, location }: Props) {
     const references: Reference[] = await fetch(
-        `${InternalServices.getBLOB()}/references.json`,
+        `${InternalServices.getBLOB()}/references/metadata.json`,
     ).then((res) => res.json());
 
     const getLink = (reference: Reference, currentPath = '') => {
