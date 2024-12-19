@@ -14,7 +14,6 @@ $--padding: 1rem;
 
     &[data-is-hidden="true"] {
         height: 0px;
-        border: none;
     }
 
     > ul {
@@ -39,9 +38,23 @@ $--padding: 1rem;
                 text-decoration: none;
                 font-family: 'K2D';
                 color: $--white;
+                border: 1px solid transparent;
                 border-radius: $--squircle-border-radius;
                 padding: calc($--padding * 0.7) $--padding;
                 padding-left: 0;
+
+                -webkit-transition: border-color ease-in-out 0.2s, padding-left ease-in-out 0.25s;
+                -moz-transition:    border-color ease-in-out 0.2s, padding-left ease-in-out 0.25s;
+                -o-transition:      border-color ease-in-out 0.2s, padding-left ease-in-out 0.25s;
+                transition:         border-color ease-in-out 0.2s, padding-left ease-in-out 0.25s;
+
+                &:active,
+                &:focus,
+                &:focus-within,
+                &:hover {
+                    padding-left: calc($--padding * 0.7);
+                    border-color: $--light-grey-color;
+                }
 
                 svg {
                     width: 1rem;
@@ -103,14 +116,16 @@ $--padding: 1rem;
         background-color: transparent;
         padding-top: $--padding;
 
-        -webkit-transition: width ease-in-out 0.2s;
-        -moz-transition:    width ease-in-out 0.2s;
-        -o-transition:      width ease-in-out 0.2s;
-        transition:         width ease-in-out 0.2s;
+        -webkit-transition: width ease-in-out 0.2s, opacity ease-in-out 0.25s;
+        -moz-transition:    width ease-in-out 0.2s, opacity ease-in-out 0.25s;
+        -o-transition:      width ease-in-out 0.2s, opacity ease-in-out 0.25s;
+        transition:         width ease-in-out 0.2s, opacity ease-in-out 0.25s;
     
         &[data-is-hidden="true"] {
             height: initial;
             width: 0px;
+            border: none;
+            opacity: 0;
         }
 
         > ul {
