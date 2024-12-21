@@ -1,21 +1,40 @@
 .hamburguer-button {
-    position: absolute;
-    margin-left: auto;
     background-color: $--white;
     padding: 0 0.6rem;
-    height: 101%;
+    height: 4rem;
+
+    &[data-is-hidden="false"] {
+        background-color: $--black;
+
+        button svg path {
+            fill: $--white;
+            stroke: $--white;
+        }
+    }
 
     button {
         background-color: transparent;
         border: transparent;
-        background-color: transparent;
 
-        svg {
-            path {
+        svg path {
+            fill: $--black;
+            stroke: $--black;
+        }
+    }
+
+}
+
+@media only screen and (min-width: $--min-desktop-width) {
+    .hamburguer-button {
+        background-color: $--white;
+
+        &[data-is-hidden="false"] {
+            background-color: $--white;
+
+            button svg path {
                 fill: $--black;
                 stroke: $--black;
             }
         }
     }
-
 }

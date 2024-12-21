@@ -53,7 +53,7 @@ $--padding: 1rem;
                 &:focus-within,
                 &:hover {
                     padding-left: calc($--padding * 0.7);
-                    border-color: $--light-grey-color;
+                    border-color: $--light-grey;
                 }
 
                 svg {
@@ -109,7 +109,7 @@ $--padding: 1rem;
         width: 400px;
         height: 100%;
         border: none;
-        border-right: 1px solid $--grey-color;
+        border-right: 1px solid $--grey;
         overflow: hidden;
         overflow-y: auto;
         margin: 0;

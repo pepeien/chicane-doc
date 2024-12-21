@@ -1,7 +1,3 @@
-//Layout Import
-@import 'layout/animations';
-@import 'layout/mods';
-
 //Components Import
 @import 'components/markdown';
 @import 'components/navbar';
@@ -21,19 +17,10 @@ body {
     height: 100vh;
 	background-color: $--white;
 
-    -webkit-transition: background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
-    -moz-transition:    background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
-    -o-transition:      background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
-    transition:         background-color ease-in-out 0.2s, opacity ease-in-out 0.2s;
-
-    header {
-        width: 100%;
-        position: fixed;
-        left: 0;
-        z-index: 2;
-        justify-content: flex-end;
-        gap: 3vh;
-    }
+    -webkit-transition: background-color ease-in-out 0.2s;
+    -moz-transition:    background-color ease-in-out 0.2s;
+    -o-transition:      background-color ease-in-out 0.2s;
+    transition:         background-color ease-in-out 0.2s;
 
     main {
         width: 100%;
@@ -52,10 +39,6 @@ body {
 @media only screen and (min-width: $--min-desktop-width) {
     body {
         overflow: hidden;
-
-        header {
-            position: relative;
-        }
 
         main {
             display: flex;

@@ -5,10 +5,12 @@
 
 html, html.light {
     @import 'themes/light';
+    @import 'base/mods';
     @import 'main';
 }
 
 html.dark {
     @import 'themes/dark';
+    @import 'base/mods';
     @import 'main';
 }

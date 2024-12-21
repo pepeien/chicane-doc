@@ -1,0 +1,115 @@
+.--infinite-animation {
+    -webkit-animation-iteration-count: infinite !important;
+    -moz-animation-iteration-counte:   infinite !important;
+    -o-animation-iteration-count:      infinite !important;
+    animation-iteration-count:         infinite !important;
+}
+
+.--rasterized-button {
+    background-color: transparent;
+    outline: none;
+    border: transparent;
+    padding: 0;
+}
+
+.--bg-color-ease-in {
+    -webkit-transition: background-color ease-in-out 0.2s;
+    -moz-transition:    background-color ease-in-out 0.2s;
+    -o-transition:      background-color ease-in-out 0.2s;
+    transition:         background-color ease-in-out 0.2s;
+}
+
+.--opacity-ease-in {
+    -webkit-transition: opacity ease-in-out 0.2s;
+    -moz-transition:    opacity ease-in-out 0.2s;
+    -o-transition:      opacity ease-in-out 0.2s;
+    transition:         opacity ease-in-out 0.2s;
+}
+
+.--transform-ease-in {
+    -webkit-transition: transform ease-in-out 0.2s;
+    -moz-transition:    transform ease-in-out 0.2s;
+    -o-transition:      transform ease-in-out 0.2s;
+    transition:         transform ease-in-out 0.2s;
+}
+
+.--color-ease-in {
+    -webkit-transition: color ease-in-out 0.2s;
+    -moz-transition:    color ease-in-out 0.2s;
+    -o-transition:      color ease-in-out 0.2s;
+    transition:         color ease-in-out 0.2s;
+}
+
+.--flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.--flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.--flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.--page {
+    height: 100%;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.--hidden-overflow-all {
+    overflow: hidden;
+}
+
+.--hidden-overflow-x {
+    overflow-x: hidden;
+}
+
+.--hidden-overflow-y {
+    overflow-y: hidden;
+}
+
+.--header-button {
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        background-color: transparent;
+        border: transparent;
+        border-radius: $--squircle-border-radius;
+        background-color: $--white;
+    
+        -webkit-transition: background-color ease-in-out 0.2s;
+        -moz-transition:    background-color ease-in-out 0.2s;
+        -o-transition:      background-color ease-in-out 0.2s;
+        transition:         background-color ease-in-out 0.2s;
+
+        &:active,
+        &:focus,
+        &:focus-within,
+        &:hover {
+            cursor: pointer;
+        }
+
+        svg {
+            width: 1.25rem;
+            height: 1.25rem;
+    
+            path {
+                -webkit-transition: fill ease-in-out 0.2s, stroke ease-in-out 0.2s;
+                -moz-transition:    fill ease-in-out 0.2s, stroke ease-in-out 0.2s;
+                -o-transition:      fill ease-in-out 0.2s, stroke ease-in-out 0.2s;
+                transition:         fill ease-in-out 0.2s, stroke ease-in-out 0.2s;
+
+                fill: $--black;
+                stroke: $--black;
+            }
+        }
+    }
+}

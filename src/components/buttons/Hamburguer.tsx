@@ -38,7 +38,11 @@ export default function Component() {
     };
 
     return (
-        <div className='hamburguer-button --flex-center --header-button' onClick={() => onClick()}>
+        <div
+            className='hamburguer-button --flex-center --header-button'
+            data-is-hidden={isHidden}
+            onClick={() => onClick()}
+        >
             <button>
                 {isHidden ? (
                     <svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>

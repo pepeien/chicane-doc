@@ -6,8 +6,6 @@
         list-style-type: none;
 
         li {
-            color: $--black;
-
             &[data-is-active="true"] {
                 a {
                     padding: 0.25rem 1.25rem;
@@ -15,15 +13,13 @@
                     background-color: $--black;
                     border-radius: 1rem;
                     font-weight: 300;
-                    opacity: 1;
                 }
             }
 
             a {
-                color: $--black;
+                color: $--grey;
                 text-decoration: none;
                 font-size: 1.1rem;
-                opacity: 0.5;
             }
         }
     }

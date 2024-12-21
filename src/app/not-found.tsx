@@ -6,15 +6,11 @@ import { getDictionary, getServerDefaultLocale } from '@dictionary';
 // Pages
 import { Layout } from '@pages';
 
-// Components
-import { Navigator } from '@components';
-
 export default async function Page() {
     const dictionary = await getDictionary(getServerDefaultLocale());
 
     return (
         <Layout.generatePage params={{ lang: getServerDefaultLocale() }}>
-            <Navigator dictionary={dictionary} location='' />
             <section className='not-found'>
                 <div className='not-found__title --flex-row'>
                     <div className='not-found__title__text --flex-column'>

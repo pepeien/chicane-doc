@@ -5,5 +5,3 @@ export { default as Providers } from './Providers';
 export { default as HamburguerButton } from './buttons/Hamburguer';
 export { default as LanguageButton } from './buttons/Language';
 export { default as ThemeButton } from './buttons/Theme';
-
-export { default as LanguageListing } from './listing/Language';
