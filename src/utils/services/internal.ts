@@ -5,10 +5,6 @@ export class InternalServices {
         return StringServices.removeExtraSlashes(process.env.BLOB);
     }
 
-    public static getGitBLOB(): string {
-        return StringServices.removeExtraSlashes(process.env.GIT_BLOB);
-    }
-
     public static getDeploymentURL(path = ''): URL {
         if (path.trim().length === 0) {
             return new URL(
