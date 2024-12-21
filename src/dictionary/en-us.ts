@@ -7,7 +7,6 @@ export default {
     LANGUAGE_LOCALE: 'en',
     LANGUAGE_LOCALE_DATE: 'en-US',
     LANGUAGE_LOCALE_URL: 'en-us',
-    LANGUAGE_LOCALE_LINKEDIN: 'en_US',
 
     DATE_NOW: 'now',
     DATE_YEAR_LONG: 'year',
@@ -22,10 +21,7 @@ export default {
     DATE_ELAPSED_LOCATION: 'AFTER',
 
     HOME_PAGE_TITLE: 'Chicane Engine - Documentation',
-    HOME_PAGE_DESCRIPTION: 'A database for whate makes the Chicane Engine.',
-
-    NOW_TEXT: 'Present',
-    UPCOMING_TEXT: 'Coming Soon',
+    HOME_PAGE_DESCRIPTION: 'A database for what makes the Chicane Engine.',
 
     NOT_FOUND_TEXT: 'Page Not Found',
 } as Dictionary;
