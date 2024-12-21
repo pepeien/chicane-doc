@@ -63,7 +63,7 @@ async function generatePage({ params, children }: Props) {
 
     return (
         <html lang={dictionary['LANGUAGE_LOCALE']} suppressHydrationWarning>
-            <body suppressHydrationWarning>
+            <body>
                 <Providers>
                     <Header dictionary={dictionary} />
                     <main>{children}</main>

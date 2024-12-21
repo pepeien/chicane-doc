@@ -18,7 +18,9 @@ export default async function Component({ dictionary, location }: Props) {
         {
             next: { revalidate: InternalServices.getFetchInterval() },
         },
-    ).then((res) => res.json());
+    )
+        .then((res) => res.json())
+        .catch(() => [] as Reference[]);
 
     const getLink = (reference: Reference, currentPath = '') => {
         const path = StringServices.removeExtraSlashes(`${currentPath}/${reference.path}`);

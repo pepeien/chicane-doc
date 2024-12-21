@@ -84,7 +84,8 @@ async function generatePage({ params }: Props) {
         next: { revalidate: InternalServices.getFetchInterval() },
     })
         .then((res) => res.json())
-        .then((references: Reference[]) => findReferenceByPath(references, '', pagePath));
+        .then((references: Reference[]) => findReferenceByPath(references, '', pagePath))
+        .catch(() => [] as Reference[]);
 
     if (!reference) {
         return notFound();
