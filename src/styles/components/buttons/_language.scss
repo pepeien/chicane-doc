@@ -1,9 +1,10 @@
 .language-button {
     margin-right: 1rem;
+    align-items: flex-end;
 
     ul {
         position: absolute;
-        margin-top: 3rem;
+        margin-top: 2.8rem;
         padding: 0.5rem;
         border-radius: calc($--squircle-border-radius * 1.2);
         background-color: $--black;

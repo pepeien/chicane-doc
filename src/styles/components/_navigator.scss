@@ -109,23 +109,22 @@ $--padding: 1rem;
         width: 400px;
         height: 100%;
         border: none;
-        border-right: 1px solid $--grey;
+        border-right: 1px solid $--light-grey;
         overflow: hidden;
         overflow-y: auto;
         margin: 0;
         background-color: transparent;
         padding-top: $--padding;
 
-        -webkit-transition: width ease-in-out 0.2s, opacity ease-in-out 0.25s;
-        -moz-transition:    width ease-in-out 0.2s, opacity ease-in-out 0.25s;
-        -o-transition:      width ease-in-out 0.2s, opacity ease-in-out 0.25s;
-        transition:         width ease-in-out 0.2s, opacity ease-in-out 0.25s;
+        -webkit-transition: width ease-in-out 0.2s;
+        -moz-transition:    width ease-in-out 0.2s;
+        -o-transition:      width ease-in-out 0.2s;
+        transition:         width ease-in-out 0.2s;
     
         &[data-is-hidden="true"] {
             height: initial;
             width: 0px;
             border: none;
-            opacity: 0;
         }
 
         > ul {

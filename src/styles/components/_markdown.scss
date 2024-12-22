@@ -180,10 +180,8 @@
 		width: max-content;
 		max-width: 100%;
 		overflow: auto;
-
-		td, th {
-			padding: 0;
-		}
+        border-radius: 0.5rem;
+        color: white;
 	}
 
 	details summary {
@@ -548,28 +546,43 @@
 		padding: 0 16px;
 		margin-bottom: 16px;
 	}
-	
+
 	table th {
 		font-weight: 600;
+        color: $--black;
 	}
-	
-	table th,
+
+	table th {
+        padding: 0.5rem 1.2rem;
+        text-align: start;
+    }
+
 	table td {
-		padding: 6px 13px;
-		border: 1px solid #30363d;
+		padding: 1rem 1.2rem;
 	}
 	
 	table td>:last-child {
 		margin-bottom: 0;
 	}
-	
-	table tr {
-		background-color: #0d1117;
-		border-top: 1px solid #21262d;
-	}
-	
-	table tr:nth-child(2n) {
-		background-color: #161b22;
+
+    table thead {
+        background-color: $--light-grey;
+
+        tr {
+            border-top: none;
+        }
+    }
+
+	table tbody {
+		background-color: $--dark-grey;
+
+        tr {
+            &:first-of-type {
+                border: none;
+            }
+
+		    border-top: 1px solid $--light-grey;
+        }
 	}
 	
 	table img {
