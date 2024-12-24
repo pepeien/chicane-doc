@@ -2,10 +2,17 @@
 
 import React from 'react';
 
-const IS_HIDDEN_ATTRIBUTE_NAME = 'data-is-hidden';
+// Statics
+import Statics from '@utils/statics';
 
 export default function Component() {
     const [isHidden, setIsHidden] = React.useState<boolean>(false);
+
+    React.useEffect(() => {
+        if (window.innerWidth < Statics.MINIMAL_DESKTOP_WIDTH) {
+            onClick();
+        }
+    }, []);
 
     const onClick = () => {
         const navigator = document.getElementById('navigator');
@@ -14,25 +21,23 @@ export default function Component() {
             return;
         }
 
-        const isHidden = navigator.getAttribute(IS_HIDDEN_ATTRIBUTE_NAME);
-
-        if (!isHidden || isHidden.trim().length === 0) {
-            navigator.setAttribute(IS_HIDDEN_ATTRIBUTE_NAME, 'true');
+        if (!navigator.hasAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME)) {
+            navigator.setAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME, 'true');
 
             setIsHidden(true);
 
             return;
         }
 
-        if (isHidden.trim() === 'true') {
-            navigator.setAttribute(IS_HIDDEN_ATTRIBUTE_NAME, 'false');
+        if (isHidden) {
+            navigator.setAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME, 'false');
 
             setIsHidden(false);
 
             return;
         }
 
-        navigator.setAttribute(IS_HIDDEN_ATTRIBUTE_NAME, 'true');
+        navigator.setAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME, 'true');
 
         setIsHidden(true);
     };
