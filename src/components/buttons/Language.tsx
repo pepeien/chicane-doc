@@ -37,19 +37,16 @@ export default function Component({ dictionary, locales }: Props) {
             {locales ? (
                 <ul className='--flex-column' data-is-list-visible={isListVisible}>
                     {Object.entries(locales).map(([id, name]) => (
-                        <li
-                            key={id}
-                            className='--flex-row'
-                            data-is-selected={isLanguageSelected(id)}
-                        >
+                        <li key={id} className='--flex-row'>
                             <Link
-                                className='--bg-color-ease-in'
+                                className='--flex-row --bg-color-ease-in'
                                 href={`/${id}/${StringServices.removeExtraSlashes(
                                     pathName.split(dictionary['LANGUAGE_LOCALE_URL'])[1],
                                 )}`}
                                 scroll={false}
                             >
                                 <span className='--color-ease-in'>{name}</span>
+                                {isLanguageSelected(id) ? <div /> : undefined}
                             </Link>
                         </li>
                     ))}
