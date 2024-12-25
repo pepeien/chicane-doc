@@ -97,7 +97,7 @@ async function generatePage({ params }: Props) {
         .then((_res) => _res.text())
         .catch(() => undefined);
 
-    if (!markdownData || markdownData.startsWith('<?xml')) {
+    if (markdownData === undefined || markdownData.startsWith('<?xml')) {
         return notFound();
     }
 

@@ -2,7 +2,6 @@
     &__history {
         align-items: center;
         gap: 1vh;
-        font-family: 'K2D';
         list-style-type: none;
 
         li {
@@ -26,7 +25,6 @@
 
     &__title {
         h1 {
-            font-family: 'K2D';
             font-size: 3rem;
             font-weight: bold;
             margin-top: 3rem;
@@ -42,7 +40,6 @@
             border-radius: 1rem;
             background-color: $--black;
             color: $--white;
-            font-family: 'K2D';
             font-size: 0.9rem;
         }
     }
