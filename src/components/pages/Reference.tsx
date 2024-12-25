@@ -81,7 +81,7 @@ async function generatePage({ params }: Props) {
     let reference: Reference | undefined;
 
     await fetch(`${blobURL}/references/metadata.json`, {
-        next: { revalidate: InternalServices.getFetchInterval() },
+        next: { revalidate: 300 },
     })
         .then((res) => res.json())
         .then((references: Reference[]) => findReferenceByPath(references, '', pagePath))
@@ -92,7 +92,7 @@ async function generatePage({ params }: Props) {
     }
 
     const markdownData = await fetch(`${blobURL}/references/${pagePath}/${params.lang}.md`, {
-        next: { revalidate: InternalServices.getFetchInterval() },
+        next: { revalidate: 300 },
     })
         .then((_res) => _res.text())
         .catch(() => undefined);
