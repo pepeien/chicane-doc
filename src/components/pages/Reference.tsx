@@ -105,8 +105,9 @@ async function generatePage({ params }: Props) {
         <React.Fragment>
             <Navigator dictionary={dictionary} location={params.reference.join('/')} />
             <section>
+                <span>namespace</span>
                 <ul className='reference__history --flex-row'>
-                    {params.reference.map((path) => {
+                    {params.reference.map((path, index) => {
                         fullPath.push(path);
 
                         const currentPath = fullPath.join('/');
@@ -117,9 +118,11 @@ async function generatePage({ params }: Props) {
                         return (
                             <React.Fragment key={currentHref}>
                                 <li data-is-active={pagePath === currentPath}>
-                                    <Link href={`/${currentHref}`}>{path}</Link>
+                                    <Link className='--color-ease-in' href={`/${currentHref}`}>
+                                        {path}
+                                    </Link>
                                 </li>
-                                <li>/</li>
+                                {index < params.reference.length - 1 ? <li>::</li> : undefined}
                             </React.Fragment>
                         );
                     })}

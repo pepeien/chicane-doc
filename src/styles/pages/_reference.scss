@@ -1,24 +1,36 @@
 .reference {
     &__history {
+        height: 2rem;
+        width: 100%;
+        overflow-x: auto;
         align-items: center;
-        gap: 1vh;
         list-style-type: none;
+        margin: 0.2rem 0 0 0;
 
         li {
             &[data-is-active="true"] {
                 a {
-                    padding: 0.25rem 1.25rem;
-                    color: $--white;
-                    background-color: $--black;
-                    border-radius: 1rem;
-                    font-weight: 300;
+                    color: $--black;
+                    font-weight: bold;
+                }
+            }
+
+            &[data-is-active="false"] {
+                a {
+                    &:active,
+                    &:focus,
+                    &:focus-within,
+                    &:hover {
+                        color: $--green;
+                    }
                 }
             }
 
             a {
                 color: $--grey;
                 text-decoration: none;
-                font-size: 1.1rem;
+                font-size: 1.25rem;
+                font-weight: 300;
             }
         }
     }
@@ -27,7 +39,7 @@
         h1 {
             font-size: 3rem;
             font-weight: bold;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
     }
 
@@ -46,5 +58,18 @@
 
     &__text {
         margin-top: 2rem;
+    }
+}
+
+
+@media only screen and (min-width: $--min-desktop-width){
+    .reference {
+        &__history {
+            margin: 0.4rem 0 0 0;
+
+            height: auto;
+            width: 100%;
+            overflow: visible;
+        }
     }
 }
