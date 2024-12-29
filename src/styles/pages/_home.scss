@@ -1,9 +1,13 @@
 .home {
+    &__title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+    }
 
-}
-
-@media only screen and (min-width: $--min-desktop-width){
-    .home {
-        
+    &__description {
+        font-size: 1.2rem;
+        font-weight: lighter;
+        margin-bottom: 2rem;
     }
 }

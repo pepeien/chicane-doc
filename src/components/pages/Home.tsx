@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
 import React from 'react';
 
+// Types
+import { Reference } from '@utils/interfaces';
+
 // Dictionary
 import { getDictionary } from '@dictionary';
 
 // Components
-import { Navigator } from '@components';
+import { Navigator, Search } from '@components';
 
 // Services
 import { InternalServices } from '@utils/services';
@@ -51,10 +54,18 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 async function generatePage({ params }: Props) {
     const dictionary = await getDictionary(params.lang);
 
+    const references = await fetch(`${InternalServices.getBLOB()}/references/metadata.json`, {
+        next: { revalidate: 0 },
+    })
+        .then((res) => res.json())
+        .catch(() => [] as Reference[]);
+
     return (
         <React.Fragment>
             <Navigator dictionary={dictionary} location='' />
-            <section></section>
+            <section className='home'>
+                <Search dictionary={dictionary} references={references} />
+            </section>
         </React.Fragment>
     );
 }
