@@ -2,6 +2,7 @@
 @import 'components/markdown';
 @import 'components/navbar';
 @import 'components/navigator';
+@import 'components/search';
 
 @import 'components/buttons/hamburguer';
 @import 'components/buttons/language';
@@ -49,7 +50,7 @@ body {
             section {
                 flex: 1;
                 overflow-y: auto;
-                padding: 3rem;
+                padding: 3.5rem;
             }
         }
     }

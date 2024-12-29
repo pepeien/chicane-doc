@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import React from 'react';
 
 // Types
@@ -17,6 +17,7 @@ interface Props {
 
 export default function Component({ dictionary, locales }: Props) {
     const pathName = usePathname();
+    const search = useSearchParams().get('search');
 
     const [isListVisible, setIsListVisible] = React.useState<boolean>(false);
 
@@ -42,7 +43,7 @@ export default function Component({ dictionary, locales }: Props) {
                                 className='--flex-row --bg-color-ease-in'
                                 href={`/${id}/${StringServices.removeExtraSlashes(
                                     pathName.split(dictionary['LANGUAGE_LOCALE_URL'])[1],
-                                )}`}
+                                )}${search && search.trim().length > 0 ? `?search=${search}` : ''}`}
                                 scroll={false}
                             >
                                 <span className='--color-ease-in'>{name}</span>

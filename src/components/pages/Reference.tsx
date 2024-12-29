@@ -104,7 +104,7 @@ async function generatePage({ params }: Props) {
     return (
         <React.Fragment>
             <Navigator dictionary={dictionary} location={params.reference.join('/')} />
-            <section>
+            <section className='reference'>
                 <span>namespace</span>
                 <ul className='reference__history --flex-row'>
                     {params.reference.map((path, index) => {
