@@ -40,6 +40,24 @@ export default function Component({ dictionary, references }: Props) {
         }
     };
 
+    const filterReferences = () => {
+        if (!search || search.trim().length === 0) {
+            return;
+        }
+
+        const nextFilteredReferences = [];
+
+        for (let reference of convertedReferences) {
+            if (!reference.path.includes(search) && !reference.title.includes(search)) {
+                continue;
+            }
+
+            nextFilteredReferences.push(reference);
+        }
+
+        setFilteredReferences(nextFilteredReferences);
+    };
+
     const onFilter = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key !== 'Enter') {
             return;
@@ -58,20 +76,7 @@ export default function Component({ dictionary, references }: Props) {
 
     React.useEffect(() => {
         convertReferences(references);
-
-        if (search && search.trim().length > 0) {
-            const nextFilteredReferences = [];
-
-            for (let _ of convertedReferences) {
-                if (!_.path.includes(search)) {
-                    continue;
-                }
-
-                nextFilteredReferences.push(_);
-            }
-
-            setFilteredReferences(nextFilteredReferences);
-        }
+        filterReferences();
     }, []);
 
     return (
