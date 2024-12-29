@@ -40,9 +40,9 @@ This is the Blob structure
 ```json
 [
     {
-        "title":    {JOB_START_DATE}   [string],
-        "path":     {JOB_START_DATE}   [string],
-        "children": {JOB_TECHNOLOGIES} [Reference[]] - OPTIONAL,
+        "title":    {REFRENCE_TITLE}   [string],
+        "path":     {REFRENCE_PATH}   [string],
+        "children": {REFRENCE_CHILDREN} [Reference[]] - OPTIONAL,
     }
 ]
 ```
@@ -51,7 +51,7 @@ Now you are ready to use the project, just issue a `npm run dev` and you're good
 
 ## About the Project
 
-This project it's my portfolio page, always beign updated.
+This project is related to the [Chicane](https://github.com/pepeien/chicane) game engine, documentation.
 
 ## Development
 
