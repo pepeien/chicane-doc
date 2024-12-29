@@ -64,7 +64,9 @@ async function generatePage({ params }: Props) {
         <React.Fragment>
             <Navigator dictionary={dictionary} location='' />
             <section className='home'>
-                <Search dictionary={dictionary} references={references} />
+                <React.Suspense>
+                    <Search dictionary={dictionary} references={references} />
+                </React.Suspense>
             </section>
         </React.Fragment>
     );

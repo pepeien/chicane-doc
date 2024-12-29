@@ -33,7 +33,9 @@ export default function Component({ dictionary }: Props) {
                 </svg>
                 <h2>Chicane</h2>
             </Link>
-            <LanguageButton dictionary={dictionary} locales={getClientLocales()} />
+            <React.Suspense>
+                <LanguageButton dictionary={dictionary} locales={getClientLocales()} />
+            </React.Suspense>
             <ThemeButton />
             <HamburguerButton />
         </header>
