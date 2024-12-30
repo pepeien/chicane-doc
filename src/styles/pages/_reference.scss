@@ -65,14 +65,14 @@
                 &:first-of-type {
                     background-color: $--light-grey;
                     color: $--black;
-                    width: calc(30% - 2rem);
-                    max-width: 150px;
+                    width: calc(50% - 2rem);
+                    max-width: 100px;
                 }
 
                 &:last-of-type {
                     background-color: $--dark-grey;
                     color: $--grey;
-                    width: calc(70% - 2rem);
+                    width: calc(100% - 2rem);
                 }
             }
         }
