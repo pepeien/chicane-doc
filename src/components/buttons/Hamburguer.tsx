@@ -15,12 +15,11 @@ export default function Component() {
             return;
         }
 
-        setIsHidden(window.innerWidth < Statics.MINIMAL_DESKTOP_WIDTH);
+        if (navigator.hasAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME)) {
+            return;
+        }
 
-        navigator.setAttribute(
-            Statics.IS_HIDDEN_ATTRIBUTE_NAME,
-            JSON.stringify(window.innerWidth < Statics.MINIMAL_DESKTOP_WIDTH),
-        );
+        navigator.setAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME, 'false');
     }, []);
 
     const onClick = () => {
