@@ -21,12 +21,11 @@ interface FilteredReference {
 export default function Component({ dictionary, references }: Props) {
     const search = useSearchParams().get('search');
 
-    const [convertedReferences, setConvertedReference] = React.useState<FilteredReference[]>([]);
     const [filteredReferences, setFilteredReferences] = React.useState<FilteredReference[]>([]);
     const [searchText, setSearchText] = React.useState<string>(search ?? '');
 
-    const convertReferences = (source: Reference[], path: string = ''): void => {
-        const nextResult = convertedReferences;
+    const convertReferences = (source: Reference[], path: string = ''): FilteredReference[] => {
+        let result: FilteredReference[] = [];
 
         for (const reference of source) {
             const nextReference = {
@@ -34,35 +33,46 @@ export default function Component({ dictionary, references }: Props) {
                 path: path.trim().length > 0 ? `${path}/${reference.path}` : reference.path,
                 source: reference.source,
             };
-            nextResult.push(nextReference);
+            result.push(nextReference);
 
-            setConvertedReference(nextResult);
-
-            convertReferences(reference.children ?? [], nextReference.path);
-        }
-    };
-
-    const filterReferences = () => {
-        if (!search || search.trim().length === 0) {
-            return;
-        }
-
-        const searchValue = search.toLowerCase();
-
-        const nextFilteredReferences = [];
-
-        for (let reference of convertedReferences) {
-            const path = reference.path.toLowerCase();
-            const title = reference.title.toLowerCase();
-
-            if (!path.includes(searchValue) && !title.includes(searchValue)) {
+            if (!reference.children) {
                 continue;
             }
 
-            nextFilteredReferences.push(reference);
+            result = result.concat(convertReferences(reference.children, nextReference.path));
         }
 
-        setFilteredReferences(nextFilteredReferences);
+        return result;
+    };
+
+    const filterReferences = (
+        target: string,
+        references: FilteredReference[],
+    ): FilteredReference[] => {
+        if (!target) {
+            return [];
+        }
+
+        const searchText = target.trim().toLowerCase();
+
+        if (searchText.length === 0) {
+            return [];
+        }
+
+        return references.filter((_) => {
+            const path = _.path.toLowerCase();
+            const title = _.title.toLowerCase();
+
+            const sourceHeader = _.source.header.toLowerCase();
+            const sourceNamespace = _.source.namespace ? _.source.namespace.toLowerCase() : '';
+
+            return (
+                path.includes(searchText) ||
+                title.includes(searchText) ||
+                sourceHeader.includes(searchText) ||
+                sourceNamespace.includes(searchText)
+            );
+        });
     };
 
     const onFilter = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -82,8 +92,13 @@ export default function Component({ dictionary, references }: Props) {
     };
 
     React.useEffect(() => {
-        convertReferences(references);
-        filterReferences();
+        const nextReferences = convertReferences(references);
+
+        if (!search || nextReferences.length === 0) {
+            return;
+        }
+
+        setFilteredReferences(filterReferences(search, nextReferences));
     }, []);
 
     return (
@@ -107,7 +122,7 @@ export default function Component({ dictionary, references }: Props) {
             </div>
             <ul className='search__items'>
                 {filteredReferences.map((reference) => (
-                    <li key={reference.path}>
+                    <li key={`${reference.path}_${reference.source.header}`}>
                         <Link
                             className='search__item'
                             href={`${dictionary['LANGUAGE_LOCALE_URL']}/reference/${reference.path}`}
