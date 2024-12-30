@@ -20,6 +20,9 @@ export default {
     DATE_ELAPSED: 'ago',
     DATE_ELAPSED_LOCATION: 'AFTER',
 
+    RESOURCE_SOURCE_HEADER: 'Header',
+    RESOURCE_SOURCE_NAMESPACE: 'Namespace',
+
     HOME_PAGE_TITLE: 'Chicane Engine - Documentation',
     HOME_PAGE_DESCRIPTION: 'A database for what makes the Chicane Engine.',
 

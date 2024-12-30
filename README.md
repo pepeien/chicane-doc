@@ -40,9 +40,13 @@ This is the Blob structure
 ```json
 [
     {
-        "title":    {REFRENCE_TITLE}   [string],
-        "path":     {REFRENCE_PATH}   [string],
-        "children": {REFRENCE_CHILDREN} [Reference[]] - OPTIONAL,
+        "title":    {REFRENCE_TITLE}    [string],
+        "path":     {REFRENCE_PATH}     [string],
+        "file": {
+            "source":    {REFRENCE_FILE_SOURCE}    [string],
+            "namespace": {REFRENCE_FILE_NAMESPACE} [string] - OPTIONAL
+        },
+        "children": {REFRENCE_CHILDREN} [Reference[]] - OPTIONAL
     }
 ]
 ```

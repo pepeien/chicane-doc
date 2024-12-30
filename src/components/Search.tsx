@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 // Types
-import { Dictionary, Reference } from '@utils/interfaces';
+import { Dictionary, Reference, ReferenceFile } from '@utils/interfaces';
 
 interface Props {
     dictionary: Dictionary;
@@ -15,6 +15,7 @@ interface Props {
 interface FilteredReference {
     title: string;
     path: string;
+    source: ReferenceFile;
 }
 
 export default function Component({ dictionary, references }: Props) {
@@ -31,6 +32,7 @@ export default function Component({ dictionary, references }: Props) {
             const nextReference = {
                 title: reference.title,
                 path: path.trim().length > 0 ? `${path}/${reference.path}` : reference.path,
+                source: reference.source,
             };
             nextResult.push(nextReference);
 
@@ -45,10 +47,15 @@ export default function Component({ dictionary, references }: Props) {
             return;
         }
 
+        const searchValue = search.toLowerCase();
+
         const nextFilteredReferences = [];
 
         for (let reference of convertedReferences) {
-            if (!reference.path.includes(search) && !reference.title.includes(search)) {
+            const path = reference.path.toLowerCase();
+            const title = reference.title.toLowerCase();
+
+            if (!path.includes(searchValue) && !title.includes(searchValue)) {
                 continue;
             }
 
@@ -105,9 +112,12 @@ export default function Component({ dictionary, references }: Props) {
                             className='search__item'
                             href={`${dictionary['LANGUAGE_LOCALE_URL']}/reference/${reference.path}`}
                         >
-                            <span className='search__item__header'>{reference.title}</span>
+                            <div className='search__item__header --flex-row'>
+                                <h4>{reference.title}</h4>
+                                <span>{reference.source.header}</span>
+                            </div>
                             <span className='search__item__namespace'>
-                                {reference.path.replaceAll('/', '::')}
+                                {reference.source?.namespace}
                             </span>
                         </Link>
                     </li>

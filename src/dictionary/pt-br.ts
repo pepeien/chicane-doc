@@ -20,6 +20,9 @@ export default {
     DATE_ELAPSED: 'há',
     DATE_ELAPSED_LOCATION: 'BEFORE',
 
+    RESOURCE_SOURCE_HEADER: 'Header',
+    RESOURCE_SOURCE_NAMESPACE: 'Namespace',
+
     HOME_PAGE_TITLE: 'Chicane Engine - Documentação',
     HOME_PAGE_DESCRIPTION: 'Um banco de dados contendo do que o Chicane Engine é feito.',
 

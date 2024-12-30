@@ -4,8 +4,8 @@ $--padding: 1rem;
     width: 100vw;
     height: 100vh;
     background-color: $--black;
-    padding-top: 4rem;
-    overflow: hidden;
+    padding-top: 1rem;
+    overflow-y: auto;
 
     -webkit-transition: height ease-in-out 0.2s;
     -moz-transition:    height ease-in-out 0.2s;
@@ -14,14 +14,13 @@ $--padding: 1rem;
 
     &[data-is-hidden="true"] {
         height: 0px;
+        padding-top: 0px;
+        overflow: hidden;
     }
 
     > ul {
-        width: 100%;
-        height: 100%;
-        padding: $--padding;
-        overflow: hidden;
-        overflow-y: auto;
+        width: calc(100% - calc($--padding * 2));
+        padding: 0 $--padding;
     }
 
     ul {
@@ -31,6 +30,8 @@ $--padding: 1rem;
         gap: calc($--padding / 2);
 
         li {
+            position: relative;
+            white-space:nowrap;
             width: 100%;
 
             a {
@@ -105,15 +106,12 @@ $--padding: 1rem;
 
 @media only screen and (min-width: $--min-desktop-width) {
     .navigator {
-        width: 400px;
-        height: 100%;
-        border: none;
+        width: 23vw;
+        max-width: 400px;
         border-right: 1px solid $--light-grey;
-        overflow: hidden;
-        overflow-y: auto;
         margin: 0;
         background-color: transparent;
-        padding-top: $--padding;
+        padding-top: 0.5rem;
 
         -webkit-transition: width ease-in-out 0.2s;
         -moz-transition:    width ease-in-out 0.2s;
@@ -121,13 +119,13 @@ $--padding: 1rem;
         transition:         width ease-in-out 0.2s;
     
         &[data-is-hidden="true"] {
-            height: initial;
+            height: 100vh;
             width: 0px;
             border: none;
         }
 
-        > ul {
-            padding-bottom: calc($--padding * 2);
+        > ul:last-child{
+            margin-bottom: 6rem;
         }
 
         ul {

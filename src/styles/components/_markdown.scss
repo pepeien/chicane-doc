@@ -1066,11 +1066,11 @@
 	}
 
 	h1 {
-		font-size: 5vh;
+		font-size: 2.75rem;
 	}
 
 	h2 {
-		font-size: 4vh;
+		font-size: 2.5rem;
 	}
 
 	em {
@@ -1135,14 +1135,6 @@
 
 @media only screen and (min-width: $--min-desktop-width) {
 	.markdown {
-        h1 {
-            font-size: 8vh;
-        }
-
-        h2 {
-            font-size: 5vh;
-        }
-
         iframe {
             width: 85%;
             height: 25vw;

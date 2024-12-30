@@ -4,7 +4,7 @@
         align-items: center;
         width: calc(calc(100% - 2rem) - 2px);
         margin: 0 auto 2rem auto;
-        background-color: rgba($--dark-grey, 0.2);
+        background-color: transparent;
         border: 1px solid rgba($--black, 0.2);
         border-radius: $--squircle-border-radius;
         padding: 0.5rem 1rem;
@@ -39,25 +39,44 @@
         display: flex;
         flex-direction: column;
         padding: 1rem 2rem;
-        background-color: $--light-grey;
+        background-color: transparent;
+        border: 1px solid $--light-grey;
         border-radius: $--squircle-border-radius;
         text-decoration: none;
         color: $--black;
-        gap: 0.4rem;
+        gap: 1rem;
 
-        -webkit-transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s;
-        -moz-transition:    background-color ease-in-out 0.2s, color ease-in-out 0.2s;
-        -o-transition:      background-color ease-in-out 0.2s, color ease-in-out 0.2s;
-        transition:         background-color ease-in-out 0.2s, color ease-in-out 0.2s;
+        -webkit-transition: background-color ease-in-out 0.2s, border-color ease-in-out 0.2s, color ease-in-out 0.2s;
+        -moz-transition:    background-color ease-in-out 0.2s, border-color ease-in-out 0.2s, color ease-in-out 0.2s;
+        -o-transition:      background-color ease-in-out 0.2s, border-color ease-in-out 0.2s, color ease-in-out 0.2s;
+        transition:         background-color ease-in-out 0.2s, border-color ease-in-out 0.2s, color ease-in-out 0.2s;
 
+        &:active,
+        &:focus,
+        &:focus-within,
         &:hover {
-           background-color: $--black;
-           color: $--white;
+            border-color: $--black;
+            background-color: $--black;
+            color: $--white;
         }
 
         &__header {
-            font-size: 1.5rem;
-            font-weight: bold;
+            align-items: center;
+            overflow: hidden;
+
+            h4 {
+                flex: 2;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            span {
+                flex: 1;
+                margin-left: auto;
+                font-size: 0.8rem;
+                opacity: 0.3;
+                text-align: right;
+            }
         }
 
         &__namespace {

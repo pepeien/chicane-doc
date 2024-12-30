@@ -18,6 +18,9 @@ export default {
     DATE_HOUR_LONG: '時間前',
     DATE_HOUR_LONG_PLURAL: '時間前',
 
+    RESOURCE_SOURCE_HEADER: 'ヘッダー',
+    RESOURCE_SOURCE_NAMESPACE: 'ネームスペース',
+
     HOME_PAGE_TITLE: 'Chicane Engine - ドキュメント',
     HOME_PAGE_DESCRIPTION: 'Chicane Engineリリスのドキュメント',
 

@@ -9,9 +9,18 @@ export default function Component() {
     const [isHidden, setIsHidden] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        if (window.innerWidth < Statics.MINIMAL_DESKTOP_WIDTH) {
-            onClick();
+        const navigator = document.getElementById('navigator');
+
+        if (!navigator) {
+            return;
         }
+
+        setIsHidden(window.innerWidth < Statics.MINIMAL_DESKTOP_WIDTH);
+
+        navigator.setAttribute(
+            Statics.IS_HIDDEN_ATTRIBUTE_NAME,
+            JSON.stringify(window.innerWidth < Statics.MINIMAL_DESKTOP_WIDTH),
+        );
     }, []);
 
     const onClick = () => {

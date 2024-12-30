@@ -105,7 +105,6 @@ async function generatePage({ params }: Props) {
         <React.Fragment>
             <Navigator dictionary={dictionary} location={params.reference.join('/')} />
             <section className='reference'>
-                <span>namespace</span>
                 <ul className='reference__history --flex-row'>
                     {params.reference.map((path, index) => {
                         fullPath.push(path);
@@ -130,8 +129,17 @@ async function generatePage({ params }: Props) {
                 <div className='reference__title'>
                     <h1>{reference.title}</h1>
                 </div>
-                <div className='reference__system'>
-                    <span>{params.reference[0]}</span>
+                <div className='reference__source --flex-column'>
+                    <div>
+                        <div>{dictionary['RESOURCE_SOURCE_HEADER']}</div>
+                        <div>{reference.source.header}</div>
+                    </div>
+                    {reference.source.namespace ? (
+                        <div>
+                            <div>{dictionary['RESOURCE_SOURCE_NAMESPACE']}</div>
+                            <div>{reference.source.namespace}</div>
+                        </div>
+                    ) : undefined}
                 </div>
                 <article className='reference__text markdown'>
                     <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
