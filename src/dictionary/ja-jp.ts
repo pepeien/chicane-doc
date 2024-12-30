@@ -22,7 +22,7 @@ export default {
     RESOURCE_SOURCE_NAMESPACE: 'ネームスペース',
 
     HOME_PAGE_TITLE: 'Chicane Engine - ドキュメント',
-    HOME_PAGE_DESCRIPTION: 'Chicane Engineリリスのドキュメント',
+    HOME_PAGE_DESCRIPTION: 'シケイン・エンジンがどのように機能するかをご覧。',
 
     NOT_FOUND_TEXT: 'お探しのページは見つかりませんでした',
 } as Dictionary;

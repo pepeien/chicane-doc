@@ -24,7 +24,7 @@ export default {
     RESOURCE_SOURCE_NAMESPACE: 'Namespace',
 
     HOME_PAGE_TITLE: 'Chicane Engine - Documentation',
-    HOME_PAGE_DESCRIPTION: 'A database for what makes the Chicane Engine.',
+    HOME_PAGE_DESCRIPTION: 'Discover how the Chicane Engine works.',
 
     NOT_FOUND_TEXT: 'Page Not Found',
 } as Dictionary;
