@@ -55,7 +55,7 @@ export class SitemapServices {
         result.push({
             url: url,
             lastModified: now,
-            changeFrequency: 'yearly',
+            changeFrequency: 'daily',
             alternates: {
                 languages: SitemapServices.getAlternates(baseUrl),
             },
