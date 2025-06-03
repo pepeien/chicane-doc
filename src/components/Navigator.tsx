@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 // Types
-import { Dictionary, Reference } from '@utils/interfaces';
+import { Dictionary, ReferenceIndex } from '@utils/interfaces';
 
 // Services
 import { InternalServices, StringServices } from '@utils/services';
@@ -13,23 +13,22 @@ interface Props {
 }
 
 export default async function Component({ dictionary, location }: Props) {
-    const references: Reference[] = await fetch(
-        `${InternalServices.getBLOB()}/references/metadata.json`,
+    const references: ReferenceIndex[] = await fetch(
+        `${InternalServices.getBLOB()}/references/index.json`,
         {
             next: { revalidate: InternalServices.getFetchInterval() },
         },
     )
         .then((res) => res.json())
-        .catch(() => [] as Reference[]);
+        .catch(() => [] as ReferenceIndex[]);
 
-    const getLink = (reference: Reference, currentPath = '') => {
-        const path = StringServices.removeExtraSlashes(`${currentPath}/${reference.path}`);
+    const getLink = (reference: ReferenceIndex) => {
+        const path = StringServices.removeExtraSlashes(reference.path);
         const href = StringServices.removeExtraSlashes(
             `/${dictionary['LANGUAGE_LOCALE_URL']}/reference/${path}`,
         );
         const hasChildren = reference.children && reference.children.length > 0;
-        const isCollapsed =
-            !location.includes(StringServices.removeExtraSlashes(path)) || !hasChildren;
+        const isCollapsed = !location.includes(path) || !hasChildren;
         const isCurrentReference = location == path;
 
         return (
@@ -53,9 +52,7 @@ export default async function Component({ dictionary, location }: Props) {
                     ) : undefined}
                 </Link>
                 {hasChildren ? (
-                    <ul className='--flex-column'>
-                        {reference.children?.map((_) => getLink(_, path))}
-                    </ul>
+                    <ul className='--flex-column'>{reference.children?.map((_) => getLink(_))}</ul>
                 ) : undefined}
             </li>
         );

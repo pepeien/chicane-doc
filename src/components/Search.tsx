@@ -5,50 +5,24 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 // Types
-import { Dictionary, Reference, ReferenceFile } from '@utils/interfaces';
+import { Dictionary, ReferenceIndex } from '@utils/interfaces';
 
 interface Props {
     dictionary: Dictionary;
-    references: Reference[];
-}
-
-interface FilteredReference {
-    title: string;
-    path: string;
-    source: ReferenceFile;
+    references: ReferenceIndex[];
 }
 
 export default function Component({ dictionary, references }: Props) {
-    const search = useSearchParams().get('search');
-
-    const [filteredReferences, setFilteredReferences] = React.useState<FilteredReference[]>([]);
-    const [searchText, setSearchText] = React.useState<string>(search ?? '');
-
-    const convertReferences = (source: Reference[], path: string = ''): FilteredReference[] => {
-        let result: FilteredReference[] = [];
-
-        for (const reference of source) {
-            const nextReference = {
-                title: reference.title,
-                path: path.trim().length > 0 ? `${path}/${reference.path}` : reference.path,
-                source: reference.source,
-            };
-            result.push(nextReference);
-
-            if (!reference.children) {
-                continue;
-            }
-
-            result = result.concat(convertReferences(reference.children, nextReference.path));
-        }
-
-        return result;
-    };
+    const [filteredReferences, setFilteredReferences] = React.useState<ReferenceIndex[]>([]);
+    const [searchText, setSearchText] = React.useState<string>(
+        useSearchParams().get('search') ?? '',
+    );
 
     const filterReferences = (
+        result: ReferenceIndex[],
         target: string,
-        references: FilteredReference[],
-    ): FilteredReference[] => {
+        references: ReferenceIndex[],
+    ) => {
         if (!target) {
             return [];
         }
@@ -59,19 +33,23 @@ export default function Component({ dictionary, references }: Props) {
             return [];
         }
 
-        return references.filter((_) => {
-            const path = _.path.toLowerCase();
-            const title = _.title.toLowerCase();
+        references.forEach((reference) => {
+            const path = reference.path.toLowerCase();
+            const title = reference.title.toLowerCase();
 
-            const sourceHeader = _.source.header.toLowerCase();
-            const sourceNamespace = _.source.namespace ? _.source.namespace.toLowerCase() : '';
+            const sourceHeader = (reference.source.header ?? '').toLowerCase();
+            const sourceNamespace = (reference.source.namespace ?? '').toLowerCase();
 
-            return (
+            if (
                 path.includes(searchText) ||
                 title.includes(searchText) ||
                 sourceHeader.includes(searchText) ||
                 sourceNamespace.includes(searchText)
-            );
+            ) {
+                result.push(reference);
+            }
+
+            filterReferences(result, searchText, reference.children);
         });
     };
 
@@ -92,13 +70,14 @@ export default function Component({ dictionary, references }: Props) {
     };
 
     React.useEffect(() => {
-        const nextReferences = convertReferences(references);
-
-        if (!search || nextReferences.length === 0) {
+        if (!searchText || references.length === 0) {
             return;
         }
 
-        setFilteredReferences(filterReferences(search, nextReferences));
+        const result: ReferenceIndex[] = [];
+        filterReferences(result, searchText, references);
+
+        setFilteredReferences(result);
     }, []);
 
     return (
@@ -122,7 +101,7 @@ export default function Component({ dictionary, references }: Props) {
             </div>
             <ul className='search__items'>
                 {filteredReferences.map((reference) => (
-                    <li key={`${reference.path}_${reference.source.header}`}>
+                    <li key={`${reference.path}_${reference.title}`}>
                         <Link
                             className='search__item'
                             href={`${dictionary['LANGUAGE_LOCALE_URL']}/reference/${reference.path}`}

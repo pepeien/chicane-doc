@@ -15,5 +15,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     )}`;
     const url = `${baseUrl}/${headers().get(LOCALE_HEADER_KEY)}`;
 
-    return SitemapServices.getReferenceSitemap(baseUrl, url, now, 'Game');
+    return SitemapServices.getReferenceSitemap(baseUrl, url, now, 'Runtime');
 }

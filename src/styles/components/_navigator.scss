@@ -42,6 +42,7 @@ $--padding: 1rem;
                 border-radius: $--squircle-border-radius;
                 padding: calc($--padding * 0.7) $--padding;
                 padding-left: 0;
+                overflow: hidden;
 
                 -webkit-transition: border-color ease-in-out 0.2s, padding-left ease-in-out 0.25s;
                 -moz-transition:    border-color ease-in-out 0.2s, padding-left ease-in-out 0.25s;

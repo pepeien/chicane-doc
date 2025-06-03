@@ -173,17 +173,6 @@
 		opacity: 1;
 	}
 
-	table {
-		border-spacing: 0;
-		border-collapse: collapse;
-		display: block;
-		width: max-content;
-		max-width: 100%;
-		overflow: auto;
-        border-radius: 0.5rem;
-        color: white;
-	}
-
 	details summary {
 		cursor: pointer;
 	}
@@ -547,48 +536,68 @@
 		margin-bottom: 16px;
 	}
 
-	table th {
-		font-weight: 600;
+    .table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        border-radius: 0.5rem;
+    }
+
+	table {
+		width: 100%;
+		overflow-x: auto;
         color: $--black;
-	}
+        margin: 0;
 
-	table th {
-        padding: 0.5rem 1.2rem;
-        text-align: start;
-    }
+        thead {
+            background-color: $--light-grey;
 
-	table td {
-		padding: 1rem 1.2rem;
-	}
-	
-	table td>:last-child {
-		margin-bottom: 0;
-	}
+            tr {
+                border-top: none;
 
-    table thead {
-        background-color: $--light-grey;
-
-        tr {
-            border-top: none;
-        }
-    }
-
-	table tbody {
-		background-color: $--dark-grey;
-
-        tr {
-            &:first-of-type {
-                border: none;
+                th {
+                	font-weight: 600;
+                    padding: 0.5rem 1.2rem;
+                    text-align: start;
+                    white-space: nowrap;
+                }
             }
+        }
 
-		    border-top: 1px solid $--light-grey;
+        tbody {
+        	background-color: $--dark-grey;
+
+            tr {
+        	    border-top: 1px solid $--light-grey;
+
+                &:first-of-type {
+                    border: none;
+                }
+
+                td {
+                	padding: 0 1.2rem;
+                    width: auto;
+
+                    > div {
+                	    padding: 1rem 0;
+                        height: 100%;
+                        display: flex;
+                        overflow-x: auto;
+                        white-space: nowrap;
+                    }
+
+                    &.--small {
+                        max-width: 8rem;
+                    }
+
+                    &.--large {
+                        max-width: 40rem;
+                    }
+                }
+            }
         }
 	}
-	
-	table img {
-		background-color: transparent;
-	}
-	
+
 	img[align=right] {
 		padding-left: 20px;
 	}

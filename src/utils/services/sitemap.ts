@@ -2,13 +2,15 @@ import { MetadataRoute } from 'next';
 import { Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 
 // Types
-import { Reference } from '@utils/interfaces';
+import { ReferenceIndex } from '@utils/interfaces';
 
 //Dictionary
 import { getCanonicalLocale, getServerLocales } from '@dictionary';
 
 // Services
 import { StringServices } from './string';
+
+// Internal
 import { InternalServices } from './internal';
 
 type SiteMap = {
@@ -61,16 +63,15 @@ export class SitemapServices {
             },
         } as SiteMap);
 
-        const references: Reference[] = await fetch(
-            `${InternalServices.getBLOB()}/references/metadata.json`,
-            {
-                next: { revalidate: InternalServices.getFetchInterval() },
-            },
+        const references: ReferenceIndex[] = await fetch(
+            `${InternalServices.getBLOB()}/references/index.json`,
+            { cache: 'no-cache' },
         )
             .then((_res) => _res.json())
-            .catch(() => [] as Reference[]);
+            .then((res) => res as ReferenceIndex[])
+            .catch(() => [] as ReferenceIndex[]);
 
-        const appendReferencesToSiteMap = (reference: Reference, path = '') => {
+        const appendReferencesToSitemap = (reference: ReferenceIndex, path = '') => {
             const currentPath = StringServices.removeExtraSlashes(`${path}/${reference.path}`);
 
             result.push({
@@ -87,14 +88,14 @@ export class SitemapServices {
             }
 
             reference.children.forEach((_) => {
-                appendReferencesToSiteMap(_, currentPath);
+                appendReferencesToSitemap(_, path);
             });
         };
 
         references
             .filter((_) => _.path === referencePath.trim())
             .forEach((_) => {
-                appendReferencesToSiteMap(_, 'reference');
+                appendReferencesToSitemap(_, 'reference');
             });
 
         return result;

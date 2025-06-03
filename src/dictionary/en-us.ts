@@ -20,8 +20,30 @@ export default {
     DATE_ELAPSED: 'ago',
     DATE_ELAPSED_LOCATION: 'AFTER',
 
-    RESOURCE_SOURCE_HEADER: 'Header',
-    RESOURCE_SOURCE_NAMESPACE: 'Namespace',
+    RESOURCE_HEADER: 'Header',
+    RESOURCE_NAMESPACE: 'Namespace',
+    REFERENCE_TYPE_DEFS: 'Types',
+    REFERENCE_TYPE_DEFS_HEADERS: 'Name,Value,Description',
+    REFERENCE_ENUMS: 'Values',
+    REFERENCE_ENUMS_HEADERS: 'Name,Description',
+    REFERENCE_CONSTRUCTORS: 'Constructors',
+    REFERENCE_CONSTRUCTORS_HEADERS: 'Name,Description',
+    REFERENCE_DESTRUCTORS: 'Destructors',
+    REFERENCE_DESTRUCTORS_HEADERS: 'Name,Description',
+    REFERENCE_OVERRIDE_FUNCTIONS: 'Override Functions',
+    REFERENCE_OVERRIDE_FUNCTIONS_HEADERS: 'Access,Return,Modifier,Name,Description',
+    REFERENCE_VIRTUAL_FUNCTIONS: 'Virtual Functions',
+    REFERENCE_VIRTUAL_FUNCTIONS_HEADERS: 'Access,Return,Modifier,Name,Description',
+    REFERENCE_STANDARD_FUNCTIONS: 'Functions',
+    REFERENCE_STANDARD_FUNCTIONS_HEADERS: 'Access,Return,Modifier,Name,Description',
+    REFERENCE_MEMBERS: 'Members',
+    REFERENCE_MEMBERS_HEADERS: 'Access,Type,Modifier,Name,Description',
+
+    CHICANE_BOX_DESCRIPTION:
+        'Box is the asset system, based on the XML format and holds binaries as Base64.',
+
+    CHICANE_GRID_DESCRIPTION:
+        'Grid is the UI system, based on a HTML & CSS systems with a parent relationship between its components.',
 
     HOME_PAGE_TITLE: 'Chicane Engine - Documentation',
     HOME_PAGE_DESCRIPTION: 'Discover how the Chicane Engine works.',

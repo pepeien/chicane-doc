@@ -1,7 +1,7 @@
 import { headers } from 'next/headers';
 
 // Types
-import { Reference } from '@utils/interfaces';
+import { ReferenceIndex } from '@utils/interfaces';
 
 // Dictionary
 import { LOCALE_HEADER_KEY } from '@dictionary';
@@ -17,11 +17,11 @@ export async function GET() {
     )}`;
     const url = `${baseUrl}/${headers().get(LOCALE_HEADER_KEY)}`;
 
-    const references: Reference[] = await fetch(
-        `${InternalServices.getBLOB()}/references/metadata.json`,
+    const references: ReferenceIndex[] = await fetch(
+        `${InternalServices.getBLOB()}/references/index.json`,
     )
         .then((_res) => _res.json())
-        .catch(() => [] as Reference[]);
+        .catch(() => [] as ReferenceIndex[]);
 
     const xmlContent = references.map((reference) => {
         return `<sitemap><loc>${`${url}/reference/${reference.path}/sitemap.xml`}</loc><lastmod>${now.toISOString()}</lastmod></sitemap>`;

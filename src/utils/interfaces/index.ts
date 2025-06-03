@@ -1,2 +1,14 @@
 export type { Dictionary } from './dictionary';
-export type { Reference, ReferenceSource as ReferenceFile } from './reference';
+export type {
+    ReferenceAcessor,
+    ReferenceModifier,
+    ReferenceType,
+    ReferenceTypeDef,
+    ReferenceEnum,
+    ReferenceFunctionParameter,
+    ReferenceFunction,
+    ReferenceMember,
+    ReferenceSource,
+    ReferenceIndex,
+    Reference,
+} from './reference';

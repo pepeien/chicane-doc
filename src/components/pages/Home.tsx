@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 // Types
-import { Reference } from '@utils/interfaces';
+import { Reference, ReferenceIndex } from '@utils/interfaces';
 
 // Dictionary
 import { getDictionary } from '@dictionary';
@@ -54,11 +54,12 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 async function generatePage({ params }: Props) {
     const dictionary = await getDictionary(params.lang);
 
-    const references = await fetch(`${InternalServices.getBLOB()}/references/metadata.json`, {
+    const references = await fetch(`${InternalServices.getBLOB()}/references/index.json`, {
         next: { revalidate: 0 },
     })
         .then((res) => res.json())
-        .catch(() => [] as Reference[]);
+        .then((res) => res as ReferenceIndex[])
+        .catch(() => [] as ReferenceIndex[]);
 
     return (
         <React.Fragment>
