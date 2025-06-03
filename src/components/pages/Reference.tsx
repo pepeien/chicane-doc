@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
+import { v4 } from 'uuid';
 
 // Dictionary
 import { getDictionary } from '@dictionary';
@@ -86,13 +87,13 @@ function generateTypeDefsTable(
                     <thead>
                         <tr>
                             {getHeaders(dictionary[headers]).map((header) => (
-                                <th key={header}>{header}</th>
+                                <th key={v4()}>{header}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {typeReferenceDefs.map((value) => (
-                            <tr key={value.name}>
+                            <tr key={v4()}>
                                 <td className='--small'>
                                     <div>{value.name}</div>
                                 </td>
@@ -129,13 +130,13 @@ function generateEnumTable(
                     <thead>
                         <tr>
                             {getHeaders(dictionary[headers]).map((header) => (
-                                <th key={header}>{header}</th>
+                                <th key={v4()}>{header}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {enumReferences.map((value) => (
-                            <tr key={value.name}>
+                            <tr key={v4()}>
                                 <td className='--small'>
                                     <div>{value.name}</div>
                                 </td>
@@ -175,7 +176,14 @@ function generateType(dictionary: Dictionary, typeReference: ReferenceType) {
             {hasTemplate ? (
                 <React.Fragment>
                     <span>&lt;</span>
-                    {typeReference.templates.map((_) => generateType(dictionary, _))}
+                    {typeReference.templates.map((_, index) => (
+                        <React.Fragment key={v4()}>
+                            {generateType(dictionary, _)}
+                            {index + 1 < typeReference.templates.length ? (
+                                <span>,&nbsp;</span>
+                            ) : undefined}
+                        </React.Fragment>
+                    ))}
                     <span>&gt;</span>
                 </React.Fragment>
             ) : undefined}
@@ -188,10 +196,13 @@ function generateFunctionName(dictionary: Dictionary, functionReference: Referen
     return (
         <React.Fragment>
             <span>{functionReference.name}(</span>
-            {functionReference.parameters.map((parameter) => (
-                <div key={`${functionReference.name}_${parameter.name}`}>
+            {functionReference.parameters.map((parameter, index) => (
+                <div key={v4()}>
                     {generateType(dictionary, parameter.type)}
-                    <span>{' ' + parameter.name}</span>
+                    <span>&nbsp;{parameter.name}</span>
+                    {index + 1 < functionReference.parameters.length ? (
+                        <span>,&nbsp;</span>
+                    ) : undefined}
                 </div>
             ))}
             <span>)</span>
@@ -217,13 +228,13 @@ function generateInitializers(
                     <thead>
                         <tr>
                             {getHeaders(dictionary[headers]).map((header) => (
-                                <th key={`${title}_${header}`}>{header}</th>
+                                <th key={v4()}>{header}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {functionReferences.map((functionReference) => (
-                            <tr key={`${functionReference.name}_${title}`}>
+                            <tr key={v4()}>
                                 <td className='--full'>
                                     <div>{generateFunctionName(dictionary, functionReference)}</div>
                                 </td>
@@ -257,13 +268,13 @@ function generateFunctions(
                     <thead>
                         <tr>
                             {getHeaders(dictionary[headers]).map((header) => (
-                                <th key={`${title}_${header}`}>{header}</th>
+                                <th key={v4()}>{header}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {functionReferences.map((functionReference) => (
-                            <tr key={`${title}_${functionReference.name}`}>
+                            <tr key={v4()}>
                                 <td className='--small'>
                                     <div>{functionReference.accessor}</div>
                                 </td>
@@ -306,13 +317,13 @@ function generateMembers(
                     <thead>
                         <tr>
                             {getHeaders(dictionary[headers]).map((header) => (
-                                <th key={`${title}_${header}`}>{header}</th>
+                                <th key={v4()}>{header}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {referenceMembers.map((referenceMember) => (
-                            <tr key={`${title}_${referenceMember.name}`}>
+                            <tr key={v4()}>
                                 <td className='--small'>
                                     <div>{referenceMember.accessor}</div>
                                 </td>
@@ -364,7 +375,7 @@ async function generatePage({ params }: Props) {
                         )}`;
 
                         return (
-                            <React.Fragment key={href}>
+                            <React.Fragment key={v4()}>
                                 <li data-is-active={index >= params.reference.length - 1}>
                                     <Link className='--color-ease-in' href={href}>
                                         {_path}

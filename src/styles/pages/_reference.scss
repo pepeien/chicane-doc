@@ -56,7 +56,7 @@
         div {
             display: flex;
             flex-direction: row;
-            border-radius: 0.4rem;
+            border-radius: $--squircle-border-radius;
             gap: 0.6rem;
 
             div {
@@ -90,7 +90,7 @@
 
         span {
             padding: 0.25rem 2rem;
-            border-radius: 1rem;
+            border-radius: $--squircle-border-radius;
             background-color: $--black;
             color: $--white;
             font-size: 0.9rem;

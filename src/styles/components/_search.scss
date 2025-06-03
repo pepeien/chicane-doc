@@ -66,16 +66,19 @@
 
             h4 {
                 flex: 2;
+                line-height: 2rem;
                 font-size: 1.5rem;
                 font-weight: bold;
             }
 
             span {
-                flex: 1;
+                flex: 1.5;
                 margin-left: auto;
                 font-size: 0.8rem;
                 opacity: 0.3;
                 text-align: right;
+                white-space: nowrap;
+                overflow-x: auto;
             }
         }
 
