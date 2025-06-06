@@ -60,6 +60,7 @@ export interface ReferenceSource {
 
 export interface Reference {
     title: string;
+    filename: string;
     path: string;
     source: ReferenceSource;
     children: Reference[];
@@ -67,6 +68,7 @@ export interface Reference {
 
 export interface ReferenceIndex {
     title: string;
+    filename: string;
     path: string;
     source: Pick<ReferenceSource, 'header' | 'namespace'>;
     children: ReferenceIndex[];

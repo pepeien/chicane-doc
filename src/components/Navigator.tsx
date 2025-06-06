@@ -39,7 +39,7 @@ export default async function Component({ dictionary, location }: Props) {
                 data-is-current-reference={isCurrentReference}
             >
                 <Link className='--flex-row' href={`/${href}`}>
-                    <span>{reference.title}</span>
+                    <span>{reference.filename}</span>
                     {hasChildren ? (
                         <svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                             <path
