@@ -94,13 +94,13 @@ function generateTypeDefsTable(
                     <tbody>
                         {typeReferenceDefs.map((value) => (
                             <tr key={v4()}>
-                                <td className='--small'>
+                                <td>
                                     <div>{value.name}</div>
                                 </td>
-                                <td className='--small'>
+                                <td>
                                     <div>{generateType(dictionary, value.type)}</div>
                                 </td>
-                                <td className='--full'>
+                                <td>
                                     <div>{dictionary[value.description]}</div>
                                 </td>
                             </tr>
@@ -137,10 +137,10 @@ function generateEnumTable(
                     <tbody>
                         {enumReferences.map((value) => (
                             <tr key={v4()}>
-                                <td className='--small'>
+                                <td>
                                     <div>{value.name}</div>
                                 </td>
-                                <td className='--full'>
+                                <td>
                                     <div>{dictionary[value.description]}</div>
                                 </td>
                             </tr>
@@ -235,7 +235,7 @@ function generateInitializers(
                     <tbody>
                         {functionReferences.map((functionReference) => (
                             <tr key={v4()}>
-                                <td className='--full'>
+                                <td>
                                     <div>{generateFunctionName(dictionary, functionReference)}</div>
                                 </td>
                                 <td>
@@ -275,7 +275,7 @@ function generateFunctions(
                     <tbody>
                         {functionReferences.map((functionReference) => (
                             <tr key={v4()}>
-                                <td className='--small'>
+                                <td>
                                     <div>{functionReference.accessor}</div>
                                 </td>
                                 <td>
@@ -284,7 +284,7 @@ function generateFunctions(
                                 <td>
                                     <div>{functionReference.modifiers.join(', ')}</div>
                                 </td>
-                                <td className='--full'>
+                                <td>
                                     <div>{generateFunctionName(dictionary, functionReference)}</div>
                                 </td>
                                 <td>
@@ -324,7 +324,7 @@ function generateMembers(
                     <tbody>
                         {referenceMembers.map((referenceMember) => (
                             <tr key={v4()}>
-                                <td className='--small'>
+                                <td>
                                     <div>{referenceMember.accessor}</div>
                                 </td>
                                 <td>
@@ -333,7 +333,7 @@ function generateMembers(
                                 <td>
                                     <div>{referenceMember.modifiers.join(', ')}</div>
                                 </td>
-                                <td className='--full'>
+                                <td>
                                     <div>{referenceMember.name}</div>
                                 </td>
                                 <td>
