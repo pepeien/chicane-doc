@@ -39,8 +39,8 @@ export default {
     REFERENCE_MEMBERS: 'Membros',
     REFERENCE_MEMBERS_HEADERS: 'Accesso,Tipo,Modificador,Nome,Descrição',
 
-    HOME_PAGE_TITLE: 'Chicane Engine - Documentação',
-    HOME_PAGE_DESCRIPTION: 'Descrubra como a Chicane Engine funciona.',
+    HOME_PAGE_TITLE: 'Chicane Graphics Engine - Documentação',
+    HOME_PAGE_DESCRIPTION: 'Descrubra como a Chicane Graphics Engine funciona.',
 
     NOT_FOUND_TEXT: 'Página não encontrada',
 } as Dictionary;

@@ -45,8 +45,8 @@ export default {
     CHICANE_GRID_DESCRIPTION:
         'Grid is the UI system, based on a HTML & CSS systems with a parent relationship between its components.',
 
-    HOME_PAGE_TITLE: 'Chicane Engine - Documentation',
-    HOME_PAGE_DESCRIPTION: 'Discover how the Chicane Engine works.',
+    HOME_PAGE_TITLE: 'Chicane Graphics Engine - Documentation',
+    HOME_PAGE_DESCRIPTION: 'Discover how the Chicane Graphics Engine works.',
 
     NOT_FOUND_TEXT: 'Page Not Found',
 } as Dictionary;

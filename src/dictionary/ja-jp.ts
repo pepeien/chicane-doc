@@ -37,8 +37,8 @@ export default {
     REFERENCE_MEMBERS: 'メンバ',
     REFERENCE_MEMBERS_HEADERS: 'アクセス,タイプ,モディファイア,名前,説明',
 
-    HOME_PAGE_TITLE: 'Chicane Engine - ドキュメント',
-    HOME_PAGE_DESCRIPTION: 'シケイン・エンジンがどのように機能するかをご覧。',
+    HOME_PAGE_TITLE: 'Chicane Graphics Engine - ドキュメント',
+    HOME_PAGE_DESCRIPTION: 'シケイン・グラフィックス・エンジンがどのように機能するかをご覧。',
 
     NOT_FOUND_TEXT: 'お探しのページは見つかりませんでした',
 } as Dictionary;
