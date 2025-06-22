@@ -381,7 +381,7 @@ async function generatePage({ params }: Props) {
                                         {_path}
                                     </Link>
                                 </li>
-                                {index < params.reference.length - 1 ? <li>::</li> : undefined}
+                                {index < params.reference.length - 1 ? <li>/</li> : undefined}
                             </React.Fragment>
                         );
                     })}

@@ -4,9 +4,9 @@
         width: 100%;
         overflow-x: auto;
         align-items: center;
-        justify-content: flex-end;
         list-style-type: none;
         margin: 0.2rem 0 1.2rem 0;
+        gap: 0.2em;
 
         li {
             &[data-is-active="true"] {
@@ -18,11 +18,16 @@
 
             &[data-is-active="false"] {
                 a {
+                    -webkit-transition: background-color ease-in-out 0.2s;
+                    -moz-transition:    background-color ease-in-out 0.2s;
+                    -o-transition:      background-color ease-in-out 0.2s;
+                    transition:         background-color ease-in-out 0.2s;
+
                     &:active,
                     &:focus,
                     &:focus-within,
                     &:hover {
-                        color: $--green;
+                        background-color: $--dark-grey;
                     }
                 }
             }
@@ -32,6 +37,8 @@
                 text-decoration: none;
                 font-size: 1.1rem;
                 font-weight: 300;
+                border-radius: $--squircle-border-radius;
+                padding: 0.2em 0.6em;
             }
         }
     }
@@ -108,7 +115,7 @@
         &__history {
             margin: 0.4rem 0 0 0;
             height: auto;
-            width: 100%;
+            justify-content: flex-end;
             overflow: visible;
         }
 
