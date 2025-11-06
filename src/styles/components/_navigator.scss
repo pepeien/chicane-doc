@@ -1,8 +1,9 @@
 $--padding: 1rem;
 
 .navigator {
+    position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: $--black;
     padding-top: 1rem;
     overflow-y: auto;
@@ -107,6 +108,7 @@ $--padding: 1rem;
 
 @media only screen and (min-width: $--min-desktop-width) {
     .navigator {
+        position: relative;
         width: 23vw;
         max-width: 400px;
         border-right: 1px solid $--light-grey;
