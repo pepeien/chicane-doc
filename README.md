@@ -1,4 +1,4 @@
-[![portfolio](.github/images/project-thumbnail.png)](https://chicane.erickfrederick.com)
+[![portfolio](.github/images/project-thumbnail.png)](https://chicane.erickcaldeira.com)
 
 # chicane-doc
 

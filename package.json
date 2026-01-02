@@ -1,7 +1,7 @@
 {
     "name": "chicane-doc",
     "version": "1.0.0",
-    "homepage": "https://chicane.erickfrederick.com",
+    "homepage": "https://chicane.erickcaldeira.com",
     "private": true,
     "scripts": {
         "dev": "next dev",
