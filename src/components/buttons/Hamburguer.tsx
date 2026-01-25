@@ -6,20 +6,20 @@ import React from 'react';
 import Statics from '@utils/statics';
 
 export default function Component() {
-    const [isHidden, setIsHidden] = React.useState<boolean>(window.innerWidth <= 768);
+    const [isHidden, setIsHidden] = React.useState<boolean>(false);
 
     React.useEffect(() => {
+        const _isHidden = window.innerWidth <= 768;
+
+        setIsHidden(_isHidden);
+
         const navigator = document.getElementById('navigator');
 
         if (!navigator) {
             return;
         }
 
-        if (navigator.hasAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME)) {
-            return;
-        }
-
-        navigator.setAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME, isHidden ? 'true' : 'false');
+        navigator.setAttribute(Statics.IS_HIDDEN_ATTRIBUTE_NAME, _isHidden ? 'true' : 'false');
     }, []);
 
     const onClick = () => {
