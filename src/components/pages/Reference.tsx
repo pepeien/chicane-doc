@@ -33,7 +33,9 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = dictionary['HOME_PAGE_TITLE'];
     const description = dictionary['HOME_PAGE_DESCRIPTION'];
-    const bannerURL = new URL(`${InternalServices.getBLOB()}/images/thumbnail.png`);
+    const bannerURL = new URL(
+        `${InternalServices.getBLOB()}/${InternalServices.getBLOBImagesPath()}/thumbnail.png`,
+    );
     const banner = {
         url: bannerURL,
         secureUrl: bannerURL,
@@ -353,9 +355,12 @@ async function generatePage({ params }: Props) {
 
     const blobURL = InternalServices.getBLOB();
 
-    const reference = await fetch(`${blobURL}/references/${params.reference.join('/')}.json`, {
-        next: { revalidate: 300 },
-    })
+    const reference = await fetch(
+        `${blobURL}/${InternalServices.getBLOBReferencesPath()}/${params.reference.join('/')}.json`,
+        {
+            next: { revalidate: 300 },
+        },
+    )
         .then((res) => res.json())
         .then((res) => res as Reference)
         .catch(() => undefined);

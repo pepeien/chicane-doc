@@ -64,7 +64,7 @@ export class SitemapServices {
         } as SiteMap);
 
         const references: ReferenceIndex[] = await fetch(
-            `${InternalServices.getBLOB()}/references/index.json`,
+            `${InternalServices.getBLOB()}/${InternalServices.getBLOBReferencesPath()}/index.json`,
             { cache: 'no-cache' },
         )
             .then((_res) => _res.json())

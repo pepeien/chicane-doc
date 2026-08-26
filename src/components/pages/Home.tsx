@@ -22,7 +22,9 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = dictionary['HOME_PAGE_TITLE'];
     const description = dictionary['HOME_PAGE_DESCRIPTION'];
-    const bannerURL = new URL(`${InternalServices.getBLOB()}/images/thumbnail.png`);
+    const bannerURL = new URL(
+        `${InternalServices.getBLOB()}/${InternalServices.getBLOBImagesPath()}/thumbnail.png`,
+    );
     const banner = {
         url: bannerURL,
         secureUrl: bannerURL,
@@ -54,9 +56,12 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 async function generatePage({ params }: Props) {
     const dictionary = await getDictionary(params.lang);
 
-    const references = await fetch(`${InternalServices.getBLOB()}/references/index.json`, {
-        next: { revalidate: 0 },
-    })
+    const references = await fetch(
+        `${InternalServices.getBLOB()}/${InternalServices.getBLOBReferencesPath()}/index.json`,
+        {
+            next: { revalidate: 0 },
+        },
+    )
         .then((res) => res.json())
         .then((res) => res as ReferenceIndex[])
         .catch(() => [] as ReferenceIndex[]);

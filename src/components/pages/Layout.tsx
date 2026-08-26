@@ -21,7 +21,9 @@ async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = dictionary['HOME_PAGE_TITLE'];
     const description = dictionary['HOME_PAGE_DESCRIPTION'];
-    const bannerURL = new URL(`${InternalServices.getBLOB()}/images/thumbnail.png`);
+    const bannerURL = new URL(
+        `${InternalServices.getBLOB()}/${InternalServices.getBLOBImagesPath()}/thumbnail.png`,
+    );
     const banner = {
         url: bannerURL,
         secureUrl: bannerURL,

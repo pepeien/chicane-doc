@@ -35,7 +35,7 @@ This is the Blob structure
 
 #### References
 
-- Files following a tree structure should be placed inside `{BLOB}/references` and follow this template:
+- Files following a tree structure should be placed inside `{BLOB}/{BLOB_REFERENCES_PATH}` and follow this template:
 
 ```json
 [

@@ -21,6 +21,14 @@ export class InternalServices {
         );
     }
 
+    public static getBLOBImagesPath(): string {
+        return StringServices.removeExtraSlashes(process.env.BLOB_IMAGES_PATH ?? '');
+    }
+
+    public static getBLOBReferencesPath(): string {
+        return StringServices.removeExtraSlashes(process.env.BLOB_REFERENCES_PATH ?? '');
+    }
+
     public static getFetchInterval(): number {
         const DEFAULT_FETCH_INTERVAL_IN_SECONDS = 3600;
 

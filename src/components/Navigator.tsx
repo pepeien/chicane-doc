@@ -14,7 +14,7 @@ interface Props {
 
 export default async function Component({ dictionary, location }: Props) {
     const references: ReferenceIndex[] = await fetch(
-        `${InternalServices.getBLOB()}/references/index.json`,
+        `${InternalServices.getBLOB()}/${InternalServices.getBLOBReferencesPath()}/index.json`,
         {
             next: { revalidate: InternalServices.getFetchInterval() },
         },

@@ -18,7 +18,7 @@ export async function GET() {
     const url = `${baseUrl}/${headers().get(LOCALE_HEADER_KEY)}`;
 
     const references: ReferenceIndex[] = await fetch(
-        `${InternalServices.getBLOB()}/references/index.json`,
+        `${InternalServices.getBLOB()}/${InternalServices.getBLOBReferencesPath()}/index.json`,
     )
         .then((_res) => _res.json())
         .catch(() => [] as ReferenceIndex[]);
