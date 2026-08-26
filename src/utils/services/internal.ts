@@ -22,14 +22,10 @@ export class InternalServices {
     }
 
     public static getBLOBImagesPath(): string {
-        console.log(StringServices.removeExtraSlashes(process.env.BLOB_IMAGES_PATH ?? ''));
-
         return StringServices.removeExtraSlashes(process.env.BLOB_IMAGES_PATH ?? '');
     }
 
     public static getBLOBReferencesPath(): string {
-        console.log(StringServices.removeExtraSlashes(process.env.BLOB_REFERENCES_PATH ?? ''));
-
         return StringServices.removeExtraSlashes(process.env.BLOB_REFERENCES_PATH ?? '');
     }
 
